@@ -63,20 +63,38 @@ function base8() {
 
 function set1() {
   const results = [];
-  for (let lines = 0; lines < base1().length; lines += 1) {
+  for (let lines = 0; lines < 5; lines += 1) {
     let text = "";
     for (let count = 0; count <= lines; count += 1) {
       text += `${base1().join(' ')}\n`;
     }
     results.push(text);
   }
-
   return results;
-
 }
+
+
+function set2() {
+  const results = [];
+  for (let lines = 0; lines < 6; lines += 1) {
+    let text = "";
+    for (let count = 0; count <= lines; count += 1) {
+      if (count % 2 === 0) {
+        text += `${base1().join(' ')}\n`;
+      } else {
+        text += `${base2().join(' ')}\n`;
+      }
+    }
+    results.push(text);
+  }
+  return results;
+}
+
+
 
 const sets = [
   set1(),
+  set2(),
   base8(),
   base7(),
   base6(),
