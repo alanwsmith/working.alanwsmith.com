@@ -1,29 +1,8 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 let debug = true;
-// debug = false;
+debug = false;
 
-
-// // replace some words with hashtags
-// function set15() {
-//   const pages = [];
-//   for (let page = 0; page < maxLinesPerPage; page += 1) {
-//     const lines = [];
-//     for (let line = 0; line <= page; line += 1) {
-//       const words = [];
-//       for (let word = 0; word <= 10; word += 1) {
-//         if(hitRandom(7)) {
-//           words.push(baseHashtags()[word]);
-//         } else {
-//           words.push(baseLowercase()[word]);
-//         }
-//       }
-//       lines.push(words.join(' '));
-//     }
-//     pages.push(lines.join("\n"));
-//   }
-//   return pages;
-// }
 
 function setList() {
   return [
@@ -757,71 +736,6 @@ function baseDots() {
 }
 
 
-
-
-
-
-// replace some words with dots 
-function set16() {
-  const pages = [];
-  for (let page = 0; page < maxLinesPerPage; page += 1) {
-    const lines = [];
-    for (let line = 0; line <= page; line += 1) {
-      const words = [];
-      for (let word = 0; word <= 10; word += 1) {
-        if(hitRandom(7)) {
-          words.push(baseDots()[word]);
-        } else {
-          words.push(baseLowercase()[word]);
-        }
-      }
-      lines.push(words.join(' '));
-    }
-    pages.push(lines.join("\n"));
-  }
-  return pages;
-}
-
-// replace some words with dots heavy
-function set17() {
-  const pages = [];
-  for (let page = 0; page < maxLinesPerPage; page += 1) {
-    const lines = [];
-    for (let line = 0; line <= page; line += 1) {
-      const words = [];
-      for (let word = 0; word <= 10; word += 1) {
-        if(hitRandom(12)) {
-          words.push(baseLowercase()[word]);
-        } else {
-          words.push(baseDots()[word]);
-        }
-      }
-      lines.push(words.join(' '));
-    }
-    pages.push(lines.join("\n"));
-  }
-  return pages;
-}
-
-// const pageSets = [
-//   set17(),
-//   // set16(),
-//   // set15(),
-//   // set14(),
-//   // set13(),
-//   // set12(),
-//   // set11(),
-//   // set10(),
-//   // set9(),
-//   // set8(),
-//   // set7(),
-//   // set6(),
-//   // set5(),
-//   // set4(),
-//   // set3(),
-//   // set2(),
-//   // set1(),
-// ]; 
 
 function shuffle(array) {
   let currentIndex = array.length
