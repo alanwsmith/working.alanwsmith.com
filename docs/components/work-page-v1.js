@@ -4,6 +4,26 @@ const maxLinesPerPage = 14;
 function setList() {
   return [
 
+    // Single column uppercase with random leading underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const leftPadding = randomUnderscoresBetween(0, 36);
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(leftPadding + ' ' + words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Single column uppercase with random underscores on both sides
     () => {
       const pages = [];
@@ -18,45 +38,45 @@ function setList() {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(leftPadding + words.join(' ') + rightPadding);
+          lines.push(leftPadding + ' ' + words.join(' ') + rightPadding);
         }
         pages.push(lines.join("\n"));
       }
       return pages;
     },
 
-    // Single column uppercase with random leading underscores
+
+    // Single column uppercase with random random dots on both sides
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
-        const leftPadding = randomUnderscoresBetween(0, 20);
+      for (let page = 0; page < 10; page += 1) {
+        const padding = randomDotsBetween(5, 18);
         const lines = [];
         for (let line = 0; line <= page; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
             if (word === line) {
-              words.push(baseUppercase()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(leftPadding + words.join(' '));
+          lines.push(padding + " " + words.join(' ') + padding);
         }
         pages.push(lines.join("\n"));
       }
       return pages;
     },
 
-
     // Single column uppercase with random right padding with dots
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
         const rightPadding = randomDotsBetween(0, 20);
         const lines = [];
         for (let line = 0; line <= page; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
             if (word === line) {
-              words.push(baseUppercase()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
           lines.push(words.join(' ') + rightPadding);
@@ -65,6 +85,7 @@ function setList() {
       }
       return pages;
     },
+
 
     // Single column uppercase with random right padding
     () => {
