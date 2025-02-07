@@ -568,7 +568,6 @@ class WorkPage extends HTMLElement {
   }
 
   async writePage() {
-//    const theLines = this.constructor.formats[this.dataset.index].split("\n");
     const theLines = this.constructor.getFormat().split("\n");
     // make a line with spaces so the correct length is set 
     let lineLength = 0;
@@ -582,7 +581,6 @@ class WorkPage extends HTMLElement {
       }
     });
     this.content.innerHTML = `${lineString}\n`;
-
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
