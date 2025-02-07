@@ -425,25 +425,25 @@ function set17() {
   return pages;
 }
 
-const pageSets = [
-  set17(),
-  // set16(),
-  // set15(),
-  // set14(),
-  // set13(),
-  // set12(),
-  // set11(),
-  // set10(),
-  // set9(),
-  // set8(),
-  // set7(),
-  // set6(),
-  // set5(),
-  // set4(),
-  // set3(),
-  // set2(),
-  // set1(),
-]; 
+// const pageSets = [
+//   set17(),
+//   // set16(),
+//   // set15(),
+//   // set14(),
+//   // set13(),
+//   // set12(),
+//   // set11(),
+//   // set10(),
+//   // set9(),
+//   // set8(),
+//   // set7(),
+//   // set6(),
+//   // set5(),
+//   // set4(),
+//   // set3(),
+//   // set2(),
+//   // set1(),
+// ]; 
 
 function shuffle(array) {
   let currentIndex = array.length
@@ -540,16 +540,23 @@ class WorkPage extends HTMLElement {
     return this.formats.pop();
   }
 
+  static baseSets() {
+    return [
+      set17()
+    ]
+  }
+
   static loadSets() {
     console.log('loadSets');
-    this.sets = pageSets;
+    this.sets = this.baseSets();
     this.padSetsLeft();
     this.padSetsRight();
     this.padSetsTop();
+    console.log(`Total sets: ${this.sets.length}`);
   }
 
   static padSetsLeft() {
-    pageSets.forEach((pageSet) => {
+    this.baseSets().forEach((pageSet) => {
       pageSet.forEach((page) => {
         const lines = page.split("\n");
         let maxLineLength = 0;
@@ -578,7 +585,7 @@ class WorkPage extends HTMLElement {
   }
 
   static padSetsRight() {
-    pageSets.forEach((pageSet) => {
+    this.baseSets().forEach((pageSet) => {
       pageSet.forEach((page) => {
         const lines = page.split("\n");
         let maxLineLength = 0;
@@ -641,11 +648,11 @@ class WorkPage extends HTMLElement {
 
   static kickoff() {
     console.log('kickoff');
-    this.loadSets();
     this.startRun();
   }
 
   static startRun() {
+    this.loadSets();
     this.updatePageOrder();
     this.updatePages();
   }
