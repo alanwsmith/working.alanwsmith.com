@@ -508,7 +508,7 @@ class WorkPage extends HTMLElement {
         lineString = lineStringCheck;
       }
     });
-    this.content.innerHTML = `${lineString} \n`;
+    this.content.innerHTML = `${lineString}\n`;
 
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
@@ -522,7 +522,7 @@ class WorkPage extends HTMLElement {
   async outputWords(words) {
     for (let i = 0; i < words.length; i += 1) {
       this.content.innerHTML += words[i];
-      if (i !== words.lenght - 1) {
+      if (i !== words.length - 1) {
         this.content.innerHTML +=  " ";
       }
       await sleep(10);
