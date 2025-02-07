@@ -51,13 +51,16 @@ class WorkPage extends HTMLElement {
     const pageId = this.pageOrder.pop();
     const format = this.formats.pop()
     const el = this.instances[pageId];
-    // await el.writePage(format);
-    console.log(el);
-    el.shadowRoot.innerHTML = format;
+    await el.writePage(format);
+    //console.log(el);
+    //el.shadowRoot.innerHTML = format;
   }
 
-
-
+  static updatePages() {
+    for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
+      this.updatePage()
+    }
+  }
 
   static formats = [
     'alfa', 'bravo', 'charlie', 'delta',
@@ -78,7 +81,7 @@ class WorkPage extends HTMLElement {
   static kickoff() {
     console.log('kicking off');
     this.updatePageOrder();
-    this.updatePage();
+    this.updatePages();
   }
 
   static pageCount() {
@@ -106,6 +109,10 @@ class WorkPage extends HTMLElement {
 
   disconnectedCallback() {
     this.constructor.deregister(this);
+  }
+
+  async writePage(format) {
+    this.shadowRoot.innerHTML = `Writing: ${format}`;
   }
 
 }
