@@ -31,6 +31,7 @@ template.innerHTML = `<div class="page-wrapper">x</div>`;
 class WorkPage extends HTMLElement {
 
   static instances = {};
+
   static pageOrder = [];
 
   static deregister(el) {
@@ -38,27 +39,14 @@ class WorkPage extends HTMLElement {
   }
 
   static register(el) {
-
-
-
     // console.log(`registered: ${el.id}`);
-    // function M.split(str) 
-  static formats = [
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    //
-    // end
     this.instances[el.id] = el;
   }
 
-
+  static updatePageOrder() {
+    for (let id in instances) {
+      pageOrder.push(id);
+    }
 
   }
 
