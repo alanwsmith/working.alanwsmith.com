@@ -204,7 +204,7 @@ class WorkPage extends HTMLElement {
     const pageId = this.pageOrder.pop();
     // const format = this.formats.pop()
     const el = this.instances[pageId];
-    console.log(el);
+    // console.log(el);
     await el.writePage();
     //el.shadowRoot.innerHTML = format;
   }
@@ -216,6 +216,7 @@ class WorkPage extends HTMLElement {
     for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
       await this.updatePage()
     }
+    this.kickoff();
   }
 
   static formats = [];
@@ -272,6 +273,7 @@ class WorkPage extends HTMLElement {
   }
 
   async writePage() {
+    this.content.innerHTML = '';
 //    const theLines = this.constructor.formats[this.dataset.index].split("\n");
     const theLines = this.constructor.getFormat().split("\n");
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
