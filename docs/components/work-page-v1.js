@@ -1,118 +1,6 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 
-function hitRandom(num) {
-  const checkNum = Math.floor(Math.random() *  num) +  1;
-  if (checkNum === num) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function randomNumberBetween (min, max) { 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-
-// All lowercase
-function baseLowercase() {
-  return [
-    `all`,
-    `work`,
-    `and`,
-    `no`,
-    `play`,
-    `makes`,
-    `jack`,
-    `a`,
-    `dull`,
-    `boy`,
-  ]
-}
-
-// All uppercase
-function baseUppercase() {
-  return baseLowercase().map((v) => { return v.toUpperCase() });
-}
-
-// All uppercase leading spaces
-function baseUppercaseLeadingSpaces() {
-  return baseLowercase().map((v) => { 
-    let parts = v.split('');
-    parts.reverse();
-    for (let i = 0; i < 5; i += 1) {
-      if (!parts[i]) {
-        parts.push(' ');
-      }
-    }
-    parts.reverse();
-    return parts.join("").toUpperCase();
-  });
-}
-
-// All uppercase trailing spaces
-function baseUppercaseTrailingSpaces() {
-  return baseLowercase().map((v) => { 
-    let parts = v.split('');
-    for (let i = 0; i < 5; i += 1) {
-      if (!parts[i]) {
-        parts.push(' ');
-      }
-    }
-    return parts.join("").toUpperCase();
-  });
-}
-
-// Capital case
-function baseCapital() {
-  return baseLowercase().map((v) => { 
-    return String(v).charAt(0).toUpperCase() + String(v).slice(1);
-  });
-}
-
-// letters replaced with underscores
-function baseUnderscore() {
-  return baseLowercase().map((v) => {
-    return v.replaceAll(/./g, '_');
-  });
-}
-
-// first letter lowercase followed by uppercase
-function baseLowerThenUppercase() {
-  return baseLowercase().map((v) => { 
-    return String(v).charAt(0).toLowerCase() + String(v).slice(1).toUpperCase();
-  });
-}
-
-// reversed lower case
-function baseLowercaseReversed() {
-  return baseLowercase().map((v) => {
-    return v.split('').reverse().join('');
-  });
-}
-
-// letters replaced with spaces 
-function baseSpaces() {
-  return baseLowercase().map((v) => {
-    return v.replaceAll(/./g, ' ');
-  });
-}
-
-// letters replaced with hashtags 
-function baseHashtags() {
-  return baseLowercase().map((v) => {
-    return v.replaceAll(/./g, '#');
-  });
-}
-
-// letters replaced with dots 
-function baseDots() {
-  return baseLowercase().map((v) => {
-    return v.replaceAll(/./g, '.');
-  });
-}
-
 function setList() {
   return [
 
@@ -265,6 +153,118 @@ function setList() {
   ]
 }
 
+
+function hitRandom(num) {
+  const checkNum = Math.floor(Math.random() *  num) +  1;
+  if (checkNum === num) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function randomNumberBetween (min, max) { 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
+// All lowercase
+function baseLowercase() {
+  return [
+    `all`,
+    `work`,
+    `and`,
+    `no`,
+    `play`,
+    `makes`,
+    `jack`,
+    `a`,
+    `dull`,
+    `boy`,
+  ]
+}
+
+// All uppercase
+function baseUppercase() {
+  return baseLowercase().map((v) => { return v.toUpperCase() });
+}
+
+// All uppercase leading spaces
+function baseUppercaseLeadingSpaces() {
+  return baseLowercase().map((v) => { 
+    let parts = v.split('');
+    parts.reverse();
+    for (let i = 0; i < 5; i += 1) {
+      if (!parts[i]) {
+        parts.push(' ');
+      }
+    }
+    parts.reverse();
+    return parts.join("").toUpperCase();
+  });
+}
+
+// All uppercase trailing spaces
+function baseUppercaseTrailingSpaces() {
+  return baseLowercase().map((v) => { 
+    let parts = v.split('');
+    for (let i = 0; i < 5; i += 1) {
+      if (!parts[i]) {
+        parts.push(' ');
+      }
+    }
+    return parts.join("").toUpperCase();
+  });
+}
+
+// Capital case
+function baseCapital() {
+  return baseLowercase().map((v) => { 
+    return String(v).charAt(0).toUpperCase() + String(v).slice(1);
+  });
+}
+
+// letters replaced with underscores
+function baseUnderscore() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '_');
+  });
+}
+
+// first letter lowercase followed by uppercase
+function baseLowerThenUppercase() {
+  return baseLowercase().map((v) => { 
+    return String(v).charAt(0).toLowerCase() + String(v).slice(1).toUpperCase();
+  });
+}
+
+// reversed lower case
+function baseLowercaseReversed() {
+  return baseLowercase().map((v) => {
+    return v.split('').reverse().join('');
+  });
+}
+
+// letters replaced with spaces 
+function baseSpaces() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, ' ');
+  });
+}
+
+// letters replaced with hashtags 
+function baseHashtags() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '#');
+  });
+}
+
+// letters replaced with dots 
+function baseDots() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '.');
+  });
+}
 
 
 // function set1() {
