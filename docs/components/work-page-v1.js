@@ -63,9 +63,9 @@ function base8() {
 
 function set1() {
   const results = [];
-  for (let lines = 0; lines < 5; lines += 1) {
+  for (let pages = 0; pages < 6; pages += 1) {
     let text = "";
-    for (let count = 0; count <= lines; count += 1) {
+    for (let lines = 0; lines <= pages; lines += 1) {
       text += `${base1().join(' ')}\n`;
     }
     results.push(text);
@@ -76,10 +76,10 @@ function set1() {
 
 function set2() {
   const results = [];
-  for (let lines = 0; lines < 6; lines += 1) {
+  for (let pages = 0; pages < 6; pages += 1) {
     let text = "";
-    for (let count = 0; count <= lines; count += 1) {
-      if (count % 2 === 0) {
+    for (let lines = 0; lines <= pages; lines += 1) {
+      if (lines % 2 === 1) {
         text += `${base1().join(' ')}\n`;
       } else {
         text += `${base2().join(' ')}\n`;
@@ -90,19 +90,44 @@ function set2() {
   return results;
 }
 
+function set3() {
+  const results = [];
+  for (let pages = 0; pages < 6; pages += 1) {
+    let text = "";
+    for (let lines = 0; lines <= pages; lines += 1) {
+      text += `${base2().join(' ')}\n`;
+    }
+    results.push(text);
+  }
+  return results;
+}
+
+function set4() {
+  const results = [];
+  for (let pages = 0; pages < 6; pages += 1) {
+    let text = "";
+    for (let lines = 0; lines <= pages; lines += 1) {
+      let words = [];
+      for (let word = 0; word <= base1().length; word += 1) {
+        if ((lines + word) % 2 === 0) {
+          words.push(base2()[word]);
+        } else {
+          words.push(base1()[word]);
+        }
+      }
+      text += `${words.join(" ")}\n`;
+    }
+    results.push(text);
+  }
+  return results;
+}
 
 
 const sets = [
-  set1(),
+  set4(),
+  set3(),
   set2(),
-  base8(),
-  base7(),
-  base6(),
-  base5(),
-  base4(),
-  base3(),
-  base2(),
-  base1(),
+  set1(),
 ]; 
 
 function shuffle(array) {
