@@ -91,9 +91,9 @@ function baseHashtags() {
 
 function set1() {
   const results = [];
-  for (let pages = 0; pages < 10; pages += 1) {
+  for (let page = 0; page < 14; page += 1) {
     let text = "";
-    for (let lines = 0; lines <= pages; lines += 1) {
+    for (let line = 0; line <= page; line += 1) {
       text += `${baseLowercase().join(' ')}\n`;
     }
     results.push(text);
@@ -102,19 +102,19 @@ function set1() {
 }
 
 function set2() {
-  const results = [];
-  for (let pages = 0; pages < 10; pages += 1) {
-    let text = "";
-    for (let lines = 0; lines <= pages; lines += 1) {
-      if (lines % 2 === 1) {
-        text += `${baseLowercase().join(' ')}\n`;
+  const pages = [];
+  for (let page = 0; page < 14; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      if (line % 2 === 1) {
+        lines.push(baseLowercase().join(' '))
       } else {
-        text += `${baseUppercase().join(' ')}\n`;
+        lines.push(baseUppercase().join(' '))
       }
     }
-    results.push(text);
+    pages.push(lines.join("\n"));
   }
-  return results;
+  return pages;
 }
 
 function set3() {
@@ -339,20 +339,20 @@ function set14() {
 
 
 const sets = [
-  set14(),
-  set13(),
-  set12(),
-  set11(),
-  set10(),
-  set9(),
-  set8(),
-  set7(),
-  set6(),
-  set5(),
-  set4(),
-  set3(),
+  // set14(),
+  // set13(),
+  // set12(),
+  // set11(),
+  // set10(),
+  // set9(),
+  // set8(),
+  // set7(),
+  // set6(),
+  // set5(),
+  // set4(),
+  // set3(),
   set2(),
-  set1(),
+  // set1(),
 ]; 
 
 function shuffle(array) {
