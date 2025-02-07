@@ -6,7 +6,7 @@ let debug = true;
 function setList() {
   return [
 
-    // Diagonal With Word Column Uppercase
+    // Diagonal With Word Column Hiding Word With Underscords 
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -15,7 +15,11 @@ function setList() {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word === page) {
-              words.push(baseUppercase()[word]);
+              if (word !== line) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseUnderscore()[word]);
+              }
             } else {
               if (word === line) {
                 words.push(baseUppercase()[word]);
