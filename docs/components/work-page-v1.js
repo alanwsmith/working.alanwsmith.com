@@ -6,7 +6,115 @@ let debug = true;
 function setList() {
   return [
 
-    // Diagonal With Word Column Hiding Word With Underscords 
+    // Crosses With Dot Fills
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (line === page) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseDashes()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Basic Crosses
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (line === page) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Single Letter Bridge
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === line) {
+              if (word !== page) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseUppercase()[word]);
+              }
+            } else {
+              if (word === page ) {
+                words.push(baseSpaces()[word]);
+              } else {
+                words.push(baseUppercase()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Diagonals With Single Word
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              if (word !== line) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseUppercase()[word]);
+              }
+            } else {
+              if (word === line) {
+                words.push(baseUppercase()[page]);
+              } else {
+                words.push(baseSpaces()[page]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Diagonal With Word Column Hiding Word With Underscores 
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -1029,6 +1137,13 @@ function basePipes() {
 function baseAsterisks() {
   return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '*');
+  });
+}
+
+// letters replaced with dash 
+function baseDashes() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '-');
   });
 }
 
