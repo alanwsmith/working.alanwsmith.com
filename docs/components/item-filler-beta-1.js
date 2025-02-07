@@ -57,6 +57,9 @@ class ItemFiller extends HTMLElement {
       el.dataset.calculatedWidth = this.itemCalculatedWidth();
       el.dataset.targetHeight = this.itemTargetHeight();
       el.dataset.targetWidth = this.itemTargetWidth();
+      el.dataset.index = childIndex;
+      el.dataset.index1 = childIndex + 1;
+      el.dataset.totalItems = this.totalChildren();
       // el.innerHTML = "stub";
       //
 
