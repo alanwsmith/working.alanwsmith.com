@@ -1,11 +1,139 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 let debug = true;
-debug = false;
+// debug = false;
 
 
 function setList() {
   return [
+
+    // All Work Makes Dull Boy With Underscores
+    () => {
+      const pages = [];
+      const indexes = [0, 1, 8, 9];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (indexes.includes(word)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseAsterisks()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // All Work Makes Dull Boy With Underscores
+    () => {
+      const pages = [];
+      const indexes = [0, 1, 5, 8, 9];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (indexes.includes(word)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseUnderscore()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Diagonal Underscores With Uppercase
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUnderscore()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Reverse Diagonal Uppercase with underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 10; word >= 0; word -= 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseUnderscore()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Diagonal Uppercase with underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseUnderscore()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Diagonal lowercase with underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(baseUnderscore()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
 
     // Lowercase or frequent hashtags
     () => {
@@ -603,6 +731,12 @@ function randomDotsBetween (min, max) {
   return theSpaces;
 }
 
+function randomSlashesBetween (min, max) { 
+  const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
+  const theSpaces = Array(spaceCount).fill('/').join('');
+  return theSpaces;
+}
+
 function randomUnderscoresBetween (min, max) { 
   const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
   const theSpaces = Array(spaceCount).fill('_').join('');
@@ -735,7 +869,33 @@ function baseDots() {
   });
 }
 
+// letters replaced with slashes 
+function baseSlashes() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '/');
+  });
+}
 
+// letters replaced with backslashes 
+function baseBackSlashes() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '\\');
+  });
+}
+
+// letters replaced with pipes 
+function basePipes() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '|');
+  });
+}
+
+// letters replaced with asterisks 
+function baseAsterisks() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '*');
+  });
+}
 
 function shuffle(array) {
   let currentIndex = array.length
