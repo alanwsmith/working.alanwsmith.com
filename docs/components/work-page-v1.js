@@ -583,9 +583,11 @@ class WorkPage extends HTMLElement {
   }
 
   static baseSets() {
-    const theSets = [];
-    setList().forEach((setItem) => {
-      theSets.push(setItem());
+    let theSets = [];
+    setList().forEach((setItem, setIndex) => {
+      if (setIndex === setList().length - 1) {
+        theSets.push(setItem());
+      }
     });
     return theSets;
   }
