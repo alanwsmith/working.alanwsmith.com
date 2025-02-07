@@ -861,7 +861,7 @@ class WorkPage extends HTMLElement {
     this.content.innerHTML = `${lineString}\n`;
     await sleep(300);
     this.allowBolds = hitRandom(4);
-    this.allowStrikes = hitRandom(7);
+    this.allowEmphasis = hitRandom(7);
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
@@ -875,8 +875,8 @@ class WorkPage extends HTMLElement {
     for (let i = 0; i < words.length; i += 1) {
       if (this.allowBolds === true && hitRandom(7) === true) {
         this.content.innerHTML += `<strong>${words[i]}</strong>`;
-      } else if (this.allowStrikes === true && hitRandom(9) === true) {
-        this.content.innerHTML += `<strike>${words[i]}</strike>`;
+      } else if (this.allowEmphasis === true && hitRandom(9) === true) {
+        this.content.innerHTML += `<em>${words[i]}</em>`;
       } else {
        this.content.innerHTML += words[i];
       }
