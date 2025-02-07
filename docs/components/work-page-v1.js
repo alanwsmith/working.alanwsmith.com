@@ -24,6 +24,8 @@ componentSheet.replaceSync(`
 
 
 .wrapper {
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
   height: 100%;
   font-size: 0.5rem;
