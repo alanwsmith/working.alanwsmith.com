@@ -155,7 +155,6 @@ componentSheet.replaceSync(`
   padding: 0.3rem;
 }
 
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -167,7 +166,6 @@ componentSheet.replaceSync(`
   padding-block: 0.2rem;
 }
 
-
 .content {
   margin: 0.5rem;
   overflow-x: clip;
@@ -176,7 +174,6 @@ componentSheet.replaceSync(`
 .written {
   background: #555;
 }
-
 
 `);
 
@@ -202,7 +199,6 @@ class WorkPage extends HTMLElement {
     shuffle(this.pageOrder);
   }
 
-
   static async updatePage() {
     console.log('updatePage');
     const pageId = this.pageOrder.pop();
@@ -214,6 +210,9 @@ class WorkPage extends HTMLElement {
   }
 
   static async updatePages() {
+    // if (this.formats.length < this.pageCount()) {
+    //   this.shuffleFormats();
+    // }
     for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
       await this.updatePage()
     }
@@ -221,18 +220,24 @@ class WorkPage extends HTMLElement {
 
   static formats = [];
 
+  static getFormat() {
+    if (this.formats.length === 0) {
+      this.shuffleFormats();
+    }
+    return this.formats.pop();
+  }
+
   static shuffleFormats() {
     this.formats = [];
     this.formats.push(...sets[0]);
     this.formats.push(...sets[1]);
     this.formats.push(...sets[2]);
     this.formats.push(...sets[3]);
+    shuffle(this.formats);
   }
-
 
   static kickoff() {
     console.log('kicking off');
-    this.shuffleFormats();
     this.updatePageOrder();
     this.updatePages();
   }
@@ -267,7 +272,8 @@ class WorkPage extends HTMLElement {
   }
 
   async writePage() {
-    const theLines = this.constructor.formats[this.dataset.index].split("\n");
+//    const theLines = this.constructor.formats[this.dataset.index].split("\n");
+    const theLines = this.constructor.getFormat().split("\n");
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
