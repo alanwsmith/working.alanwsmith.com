@@ -562,22 +562,11 @@ class WorkPage extends HTMLElement {
   }
 
   static baseSets() {
-
     const theSets = [];
     setList().forEach((setItem) => {
       theSets.push(setItem());
     });
-
-    // console.log(setList);
-
     return theSets;
-
-    // return setList();
-
-    // return [
-    //   set17()
-    // ]
-
   }
 
   static loadSets() {
