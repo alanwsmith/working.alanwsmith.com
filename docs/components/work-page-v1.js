@@ -210,9 +210,6 @@ class WorkPage extends HTMLElement {
   }
 
   static async updatePages() {
-    // if (this.formats.length < this.pageCount()) {
-    //   this.shuffleFormats();
-    // }
     for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
       await this.updatePage()
     }
@@ -229,6 +226,7 @@ class WorkPage extends HTMLElement {
   }
 
   static shuffleFormats() {
+    console.log('shuffleFormats');
     this.formats = [];
     this.formats.push(...sets[0]);
     this.formats.push(...sets[1]);
