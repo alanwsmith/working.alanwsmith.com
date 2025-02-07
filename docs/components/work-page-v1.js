@@ -263,19 +263,96 @@ function set10() {
   return results;
 }
 
+function set11() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if (word === line) {
+          words.push(baseUppercaseLeadingSpaces()[word]);
+          words.push(baseUppercaseTrailingSpaces()[word]);
+          words.push(baseUppercaseLeadingSpaces()[word]);
+          words.push(baseUppercaseTrailingSpaces()[word]);
+        }
+      }
+      lines.push(words.join(" "));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
+function set12() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if (word === line) {
+          words.push(baseUppercaseTrailingSpaces()[word]);
+          words.push(baseUppercaseLeadingSpaces()[word]);
+          words.push(baseUppercaseTrailingSpaces()[word]);
+          words.push(baseUppercaseLeadingSpaces()[word]);
+        }
+      }
+      lines.push(words.join(" "));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
+function set13() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        words.push(baseUppercase()[line]);
+      }
+      lines.push(words.join(""));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
+function set14() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        words.push(baseLowercase()[line]);
+      }
+      lines.push(words.join(""));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
 
 
 const sets = [
+  set14(),
+  set13(),
+  set12(),
+  set11(),
   set10(),
-  // set9(),
-  // set8(),
-  // set7(),
-  // set6(),
-  // set5(),
-  // set4(),
-  // set3(),
-  // set2(),
-  // set1(),
+  set9(),
+  set8(),
+  set7(),
+  set6(),
+  set5(),
+  set4(),
+  set3(),
+  set2(),
+  set1(),
 ]; 
 
 function shuffle(array) {
