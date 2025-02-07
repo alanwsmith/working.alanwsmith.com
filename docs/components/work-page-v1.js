@@ -1,6 +1,16 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 
+
+function hitRandom(num) {
+  const checkNum = Math.floor(Math.random() *  num) +  1;
+  if (checkNum === num) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // All lowercase
 function baseLowercase() {
   return [
@@ -93,15 +103,19 @@ function baseHashtags() {
 }
 
 function set1() {
-  const results = [];
+  const pages = [];
   for (let page = 0; page < maxLinesPerPage; page += 1) {
-    let text = "";
+    const lines = [];
     for (let line = 0; line <= page; line += 1) {
-      text += `${baseLowercase().join(' ')}\n`;
+      const words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        words.push(baseLowercase()[word]);
+      }
+      lines.push(words.join(' '));
     }
-    results.push(text);
+    pages.push(lines.join("\n"));
   }
-  return results;
+  return pages;
 }
 
 function set2() {
@@ -340,22 +354,42 @@ function set14() {
   return results;
 }
 
+function set15() {
+  const pages = [];
+  for (let page = 0; page < maxLinesPerPage; page += 1) {
+    const lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      const words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if(hitRandom(7)) {
+          words.push(baseHashtags()[word]);
+        } else {
+          words.push(baseLowercase()[word]);
+        }
+      }
+      lines.push(words.join(' '));
+    }
+    pages.push(lines.join("\n"));
+  }
+  return pages;
+}
 
 const pageSets = [
-  set14(),
-  set13(),
-  set12(),
-  set11(),
-  set10(),
-  set9(),
-  set8(),
-  set7(),
-  set6(),
-  set5(),
-  set4(),
-  set3(),
-  set2(),
-  set1(),
+  set15(),
+  // set14(),
+  // set13(),
+  // set12(),
+  // set11(),
+  // set10(),
+  // set9(),
+  // set8(),
+  // set7(),
+  // set6(),
+  // set5(),
+  // set4(),
+  // set3(),
+  // set2(),
+  // set1(),
 ]; 
 
 function shuffle(array) {
