@@ -109,6 +109,27 @@ function baseDots() {
   });
 }
 
+function setList() {
+  return [
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseLowercase()[word]);
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    }
+  ]
+}
+
+
 
 function set1() {
   const pages = [];
@@ -541,9 +562,22 @@ class WorkPage extends HTMLElement {
   }
 
   static baseSets() {
-    return [
-      set17()
-    ]
+
+    const theSets = [];
+    setList().forEach((setItem) => {
+      theSets.push(setItem());
+    });
+
+    // console.log(setList);
+
+    return theSets;
+
+    // return setList();
+
+    // return [
+    //   set17()
+    // ]
+
   }
 
   static loadSets() {
