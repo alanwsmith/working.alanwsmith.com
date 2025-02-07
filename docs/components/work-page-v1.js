@@ -291,16 +291,28 @@ class WorkPage extends HTMLElement {
   }
 
   async writePage() {
-    this.content.innerHTML = '';
 //    const theLines = this.constructor.formats[this.dataset.index].split("\n");
     const theLines = this.constructor.getFormat().split("\n");
+    // make a line with spaces so the correct length is set 
+    let lineLength = 0;
+    let lineString = '';
+    theLines.forEach((line) => {
+      const lineCharacters = line.split('');
+      const lineStringCheck = lineCharacters.map((lc) => { return ' '}).join('');
+      if (lineCharacters.length > lineLength) {
+        lineLength = lineCharacters.length;
+        lineString = lineStringCheck;
+      }
+    });
+    this.content.innerHTML = `${lineString} \n`;
+
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
       this.content.innerHTML += "\n";
       await sleep(60);
     }
-    await sleep(500);
+    await sleep(400);
   }
 
   async outputWords(words) {
