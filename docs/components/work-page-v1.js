@@ -142,13 +142,33 @@ function set5() {
   return results;
 }
 
+function set6() {
+  const results = [];
+  for (let pages = 0; pages < 6; pages += 1) {
+    let text = "";
+    for (let lines = 0; lines <= pages; lines += 1) {
+      let words = [];
+      for (let word = 0; word <= base1().length; word += 1) {
+        if ((lines + word) % 2 === 0) {
+          words.push(base2()[word]);
+        } else {
+          words.push(baseSpaces()[word]);
+        }
+      }
+      text += `${words.join(" ")}\n`;
+    }
+    results.push(text);
+  }
+  return results;
+}
 
 const sets = [
-  set5(),
-  set4(),
-  set3(),
-  set2(),
-  set1(),
+  set6(),
+  // set5(),
+  // set4(),
+  // set3(),
+  // set2(),
+  // set1(),
 ]; 
 
 function shuffle(array) {
