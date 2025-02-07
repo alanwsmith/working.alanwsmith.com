@@ -1,3 +1,16 @@
+function shuffleArray(array) {
+  let currentIndex = array.length
+  let randomIndex
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], 
+      array[currentIndex]
+    ];
+  }
+}
+
 const componentSheet = new CSSStyleSheet();
 componentSheet.replaceSync(`
 :host {
@@ -18,15 +31,61 @@ template.innerHTML = `<div class="page-wrapper">x</div>`;
 class WorkPage extends HTMLElement {
 
   static instances = {};
+  static pageOrder = [];
 
   static deregister(el) {
     // TODO: Remove the element
   }
 
   static register(el) {
+
+
+
     // console.log(`registered: ${el.id}`);
+    // function M.split(str) 
+  static formats = [
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    //
+    // end
     this.instances[el.id] = el;
   }
+
+
+
+  }
+
+  static formats = [
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta',
+  ];
+
+
+  static pageCount() {
+    return Object.keys(this.instances).length;
+  }
+
+
+
+
 
   constructor() {
     super();
