@@ -34,6 +34,19 @@ function baseUppercaseLeadingSpaces() {
   });
 }
 
+// All uppercase trailing spaces
+function baseUppercaseTrailingSpaces() {
+  return baseLowercase().map((v) => { 
+    let parts = v.split('');
+    for (let i = 0; i < 5; i += 1) {
+      if (!parts[i]) {
+        parts.push(' ');
+      }
+    }
+    return parts.join("").toUpperCase();
+  });
+}
+
 // Capital case
 function baseCapital() {
   return baseLowercase().map((v) => { 
@@ -212,10 +225,50 @@ function set8() {
   return results;
 }
 
+function set9() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if (word === line) {
+          words.push(baseUppercaseLeadingSpaces()[word]);
+          words.push(baseUppercase()[word]);
+        }
+      }
+      lines.push(words.join(" "));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
+function set10() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if (word === line) {
+          words.push(baseUppercaseTrailingSpaces()[word]);
+          words.push(baseUppercaseLeadingSpaces()[word]);
+        }
+      }
+      lines.push(words.join(" "));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
 
 
 const sets = [
-  set8(),
+  set10(),
+  // set9(),
+  // set8(),
   // set7(),
   // set6(),
   // set5(),
