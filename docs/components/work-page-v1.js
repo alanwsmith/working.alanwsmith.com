@@ -138,7 +138,7 @@ componentSheet.replaceSync(`
 `);
 
 const template = document.createElement('template');
-template.innerHTML = `<div class="wrapper"><pre class="content"></pre></div>`;
+template.innerHTML = `<div class="wrapper written"><pre class="content"></pre></div>`;
 
 class WorkPage extends HTMLElement {
 
@@ -155,16 +155,18 @@ class WorkPage extends HTMLElement {
     for (let id in this.instances) {
       this.pageOrder.push(id);
     }
-    shuffle(this.pageOrder);
+    this.pageOrder.reverse();
+    // shuffle(this.pageOrder);
   }
+
 
   static async updatePage() {
     console.log('updatePage');
-     const pageId = this.pageOrder.pop();
+    const pageId = this.pageOrder.pop();
     // const format = this.formats.pop()
     const el = this.instances[pageId];
+    console.log(el);
     await el.writePage();
-    //console.log(el);
     //el.shadowRoot.innerHTML = format;
   }
 
@@ -212,9 +214,9 @@ class WorkPage extends HTMLElement {
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.shadowRoot.adoptedStyleSheets = [componentSheet];
-    this.constructor.register(this);
     this.wrapper = this.shadowRoot.querySelector('.wrapper');
     this.content = this.shadowRoot.querySelector('.content');
+    this.constructor.register(this);
   }
 
   disconnectedCallback() {
@@ -222,14 +224,27 @@ class WorkPage extends HTMLElement {
   }
 
   async writePage() {
-    this.wrapper.classList.add('written');
-    const tmpStrings = [this.constructor.formats[this.dataset.index]];
-    const tmpLetters = tmpStrings.join(" ");
-    this.content.innerHTML = tmpLetters;
+    const theLines = this.constructor.formats[this.dataset.index].split("\n");
+    for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
+      const words = theLines[lineIndex].split(' ');
+      await this.outputWords(words);
+      this.content.innerHTML += "\n";
+      await sleep(50);
+    }
 
-    // this.content.innerHTML = `Writing: ${this.constructor.formats[this.dataset.index]}`;
-    await sleep(200);
+    await sleep(500);
   }
+
+  async outputWords(words) {
+    for (let i = 0; i < words.length; i += 1) {
+      this.content.innerHTML += words[i];
+      if (i !== words.lenght - 1) {
+        this.content.innerHTML +=  " ";
+      }
+      await sleep(30);
+    }
+  }
+
 
 }
 
