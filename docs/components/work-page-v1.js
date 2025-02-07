@@ -469,9 +469,7 @@ class WorkPage extends HTMLElement {
             maxLineLength = lineLength;
           }
         });
-
         if (maxLineLength < maxCharactersPerLine) {
-          // pageSet.forEach((page) => {
           let newPageSet = [];
           let newPage = [];
           let newLines = [];
@@ -483,41 +481,10 @@ class WorkPage extends HTMLElement {
             newLines.push(characters.reverse().join(''));
           });
           newPageSet.push(newLines.join("\n"));
-          // newPageSet.push(newPage);
-          // console.log(this.sets[0]);
-          // console.log(newPageSet);
-          // newPageSet.push(newPage);
-          console.log(newPageSet);
           this.sets.push(newPageSet);
         }
       });
     });
-
-
-
-
-        //if (maxLineLength < maxCharactersPerLine) {
-        //  let newPageSet = [];
-        //  pageSets.forEach((pageSet) => {
-        //    let newPage = [];
-        //    pageSet.forEach((page) => {
-        //      let newLines = [];
-        //      page.split("\n").forEach((line) => {
-        //        let characters = line.split('').reverse();
-        //        for (let addIndex = maxLineLength; addIndex < maxCharactersPerLine; addIndex += 1) {
-        //          characters.push(" ")
-        //        }
-        //        newLines.push(characters.reverse().join(''));
-        //      });
-        //      newPage.push(newLines.join("\n"));
-        //    });
-        //    newPageSet.push(newPage);
-        //  });
-        //  console.log(newPageSet);
-        //  console.log(this.sets[0]);
-        //  //this.sets.push(newPageSet);
-        //}
-
   }
 
   static shuffleFormats() {
