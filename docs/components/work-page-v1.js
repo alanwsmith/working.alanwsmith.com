@@ -19,6 +19,21 @@ function baseUppercase() {
   return baseLowercase().map((v) => { return v.toUpperCase() });
 }
 
+// All uppercase leading spaces
+function baseUppercaseLeadingSpaces() {
+  return baseLowercase().map((v) => { 
+    let parts = v.split('');
+    parts.reverse();
+    for (let i = 0; i < 5; i += 1) {
+      if (!parts[i]) {
+        parts.push(' ');
+      }
+    }
+    parts.reverse();
+    return parts.join("").toUpperCase();
+  });
+}
+
 // Capital case
 function baseCapital() {
   return baseLowercase().map((v) => { 
@@ -167,7 +182,7 @@ function set7() {
     let lines = [];
     for (let line = 0; line <= page; line += 1) {
       let words = [];
-      for (let word = 0; word <= baseLowercase().length; word += 1) {
+      for (let word = 0; word <= 10; word += 1) {
         if (word === line) {
           words.push(baseUppercase()[word]);
         }
@@ -179,15 +194,35 @@ function set7() {
   return results;
 }
 
+function set8() {
+  const results = [];
+  for (let page = 1; page < 10; page += 1) {
+    let lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      let words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if (word === line) {
+          words.push(baseUppercaseLeadingSpaces()[word]);
+        }
+      }
+      lines.push(words.join(" "));
+    }
+    results.push(lines.join("\n"));
+  }
+  return results;
+}
+
+
 
 const sets = [
-  set7(),
-  set6(),
-  set5(),
-  set4(),
-  set3(),
-  set2(),
-  set1(),
+  set8(),
+  // set7(),
+  // set6(),
+  // set5(),
+  // set4(),
+  // set3(),
+  // set2(),
+  // set1(),
 ]; 
 
 function shuffle(array) {
