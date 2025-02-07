@@ -1,10 +1,35 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 let debug = true;
-debug = false;
+// debug = false;
 
 function setList() {
   return [
+
+    // Diagonal With Word Column Uppercase
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (word === line) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
 
     // lower case strings with asterisks 
     () => {
