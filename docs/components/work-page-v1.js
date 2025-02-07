@@ -520,7 +520,7 @@ class WorkPage extends HTMLElement {
   }
 
   static padSetsTop() {
-    const targetLines = maxLinesPerPage - 4;
+    const targetLines = maxLinesPerPage - 6;
     let newSets = [];
     this.sets.forEach((pages) => {
       pages.forEach((page) => {
