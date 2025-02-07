@@ -1,4 +1,5 @@
 const maxCharactersPerLine = 52;
+const maxLinesPerPage = 14;
 
 // All lowercase
 function baseLowercase() {
@@ -93,7 +94,7 @@ function baseHashtags() {
 
 function set1() {
   const results = [];
-  for (let page = 0; page < 14; page += 1) {
+  for (let page = 0; page < maxLinesPerPage; page += 1) {
     let text = "";
     for (let line = 0; line <= page; line += 1) {
       text += `${baseLowercase().join(' ')}\n`;
@@ -105,7 +106,7 @@ function set1() {
 
 function set2() {
   const pages = [];
-  for (let page = 0; page < 14; page += 1) {
+  for (let page = 0; page < maxLinesPerPage; page += 1) {
     let lines = [];
     for (let line = 0; line <= page; line += 1) {
       if (line % 2 === 1) {
@@ -121,7 +122,7 @@ function set2() {
 
 function set3() {
   const results = [];
-  for (let pages = 0; pages < 10; pages += 1) {
+  for (let pages = 0; pages < maxLinesPerPage; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       text += `${baseUppercase().join(' ')}\n`;
@@ -457,6 +458,7 @@ class WorkPage extends HTMLElement {
     this.sets = pageSets;
     this.padSetsLeft();
     this.padSetsRight();
+    this.padSetsTop();
   }
 
   static padSetsLeft() {
@@ -517,6 +519,29 @@ class WorkPage extends HTMLElement {
     });
   }
 
+  static padSetsTop() {
+    const targetLines = maxLinesPerPage - 4;
+    let newSets = [];
+    this.sets.forEach((pages) => {
+      pages.forEach((page) => {
+        const lines = page.split("\n");
+        if (lines.length < targetLines) {
+          let newSet = [];
+          let newPage = [];
+          let newLines = [];
+          for (let addLine = 0; addLine < targetLines - lines.length; addLine += 1) {
+            newLines.push("");
+          }
+          newLines.push(...lines);
+          newPage.push(newLines.join("\n"));
+          // newSet.push(newPage);
+          newSets.push(newPage);
+        }
+      });
+    });
+    this.sets.push(...newSets);
+    //console.log(newSets);
+  }
 
   static shuffleFormats() {
     console.log('shuffleFormats');
