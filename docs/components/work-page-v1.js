@@ -22,18 +22,29 @@ componentSheet.replaceSync(`
   padding: 0.3rem;
 }
 
-.page-wrapper {
+
+.wrapper {
   box-sizing: border-box;
   height: 100%;
-  background: #333;
-  padding: 0.4rem;
+  font-size: 0.5rem;
+  overflow-x: clip;
+  padding-block: 0.2rem;
+}
+
+.content {
+  margin: 0.5rem;
+  overflow-x: clip;
+}
+
+.written {
+  background: #555;
 }
 
 
 `);
 
 const template = document.createElement('template');
-template.innerHTML = `<div class="page-wrapper"></div>`;
+template.innerHTML = `<div class="wrapper"><pre class="content"></pre></div>`;
 
 class WorkPage extends HTMLElement {
 
@@ -119,17 +130,28 @@ class WorkPage extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.shadowRoot.adoptedStyleSheets = [componentSheet];
     this.constructor.register(this);
-    this.content = this.shadowRoot.querySelector('.page-wrapper');
+    this.wrapper = this.shadowRoot.querySelector('.wrapper');
+    this.content = this.shadowRoot.querySelector('.content');
   }
 
   disconnectedCallback() {
     this.constructor.deregister(this);
   }
 
-
   async writePage() {
-    this.content.innerHTML = `Writing: ${this.constructor.formats[this.dataset.index]}`;
-    await sleep(100);
+    this.wrapper.classList.add('written');
+    const tmpStrings = [this.constructor.formats[this.dataset.index]];
+    tmpStrings.push(tmpStrings[0]);
+    tmpStrings.push(tmpStrings[0]);
+    tmpStrings.push(tmpStrings[0]);
+    tmpStrings.push(tmpStrings[0]);
+    tmpStrings.push(tmpStrings[0]);
+    const tmpLetters = tmpStrings.join(" ");
+    this.content.innerHTML = 
+      `all work and no play makes jack a dull boy.`;
+
+    // this.content.innerHTML = `Writing: ${this.constructor.formats[this.dataset.index]}`;
+    await sleep(200);
   }
 
 }
