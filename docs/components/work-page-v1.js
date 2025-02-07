@@ -1,3 +1,4 @@
+// All lowercase
 function base1() {
   return [
     `all`,
@@ -13,29 +14,72 @@ function base1() {
   ]
 }
 
+// All uppercase
 function base2() {
   return base1().map((v) => { return v.toUpperCase() });
 }
 
+// Capital case
 function base3() {
   return base1().map((v) => { 
     return String(v).charAt(0).toUpperCase() + String(v).slice(1);
   });
 }
 
+// letters replaced with underscores
 function base4() {
   return base1().map((v) => {
     return v.replaceAll(/./g, '_');
   });
 }
 
+// first letter lowercase followed by uppercase
 function base5() {
   return base1().map((v) => { 
     return String(v).charAt(0).toLowerCase() + String(v).slice(1).toUpperCase();
   });
 }
 
+// reversed lower case
+function base6() {
+  return base1().map((v) => {
+    return v.split('').reverse().join('');
+  });
+}
+
+// letters replaced with spaces 
+function base7() {
+  return base1().map((v) => {
+    return v.replaceAll(/./g, ' ');
+  });
+}
+
+// letters replaced with hashtags 
+function base8() {
+  return base1().map((v) => {
+    return v.replaceAll(/./g, '#');
+  });
+}
+
+function set1() {
+  const results = [];
+  for (let lines = 0; lines < base1().length; lines += 1) {
+    let text = "";
+    for (let count = 0; count <= lines; count += 1) {
+      text += `${base1().join(' ')}\n`;
+    }
+    results.push(text);
+  }
+
+  return results;
+
+}
+
 const sets = [
+  set1(),
+  base8(),
+  base7(),
+  base6(),
   base5(),
   base4(),
   base3(),
@@ -76,8 +120,10 @@ componentSheet.replaceSync(`
   height: 100%;
   font-size: 0.6rem;
   overflow-x: clip;
+  overflow-y: clip;
   padding-block: 0.2rem;
 }
+
 
 .content {
   margin: 0.5rem;
