@@ -1,9 +1,137 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
-const debug = true;
+let debug = true;
+// debug = false;
+
+
+// // replace some words with hashtags
+// function set15() {
+//   const pages = [];
+//   for (let page = 0; page < maxLinesPerPage; page += 1) {
+//     const lines = [];
+//     for (let line = 0; line <= page; line += 1) {
+//       const words = [];
+//       for (let word = 0; word <= 10; word += 1) {
+//         if(hitRandom(7)) {
+//           words.push(baseHashtags()[word]);
+//         } else {
+//           words.push(baseLowercase()[word]);
+//         }
+//       }
+//       lines.push(words.join(' '));
+//     }
+//     pages.push(lines.join("\n"));
+//   }
+//   return pages;
+// }
 
 function setList() {
   return [
+
+    // Lowercase or frequent hashtags
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(9)) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(baseHashtags()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Uppercase or frequent underscores 
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(9)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseUnderscore()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Uppercase or underscores 
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(4)) {
+              words.push(baseUnderscore()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Uppercase or spaces 
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(4)) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Lowercase or dots
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(4)) {
+              words.push(baseDots()[word]);
+            } else {
+              words.push(baseLowercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
 
     // Six columns left justified uppercase
     () => {
@@ -239,7 +367,6 @@ function setList() {
       }
       return pages;
     },
-
 
     // Single column uppercase with random random dots on both sides
     () => {
@@ -633,27 +760,6 @@ function baseDots() {
 
 
 
-
-// replace some words with hashtags
-function set15() {
-  const pages = [];
-  for (let page = 0; page < maxLinesPerPage; page += 1) {
-    const lines = [];
-    for (let line = 0; line <= page; line += 1) {
-      const words = [];
-      for (let word = 0; word <= 10; word += 1) {
-        if(hitRandom(7)) {
-          words.push(baseHashtags()[word]);
-        } else {
-          words.push(baseLowercase()[word]);
-        }
-      }
-      lines.push(words.join(' '));
-    }
-    pages.push(lines.join("\n"));
-  }
-  return pages;
-}
 
 // replace some words with dots 
 function set16() {
