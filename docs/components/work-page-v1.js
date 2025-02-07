@@ -1,5 +1,6 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
+const debug = true;
 
 function setList() {
   return [
@@ -842,7 +843,9 @@ class WorkPage extends HTMLElement {
   static baseSets() {
     let theSets = [];
     setList().forEach((setItem, setIndex) => {
-      if (setIndex === 0) {
+      if (debug === true && setIndex === 0) {
+        theSets.push(setItem());
+      } else if (debug === false) {
         theSets.push(setItem());
       }
     });
