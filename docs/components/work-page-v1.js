@@ -2,27 +2,52 @@ const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 const debug = true;
 
-// function set9() {
-//   const results = [];
-//   for (let page = 1; page < 10; page += 1) {
-//     let lines = [];
-//     for (let line = 0; line <= page; line += 1) {
-//       let words = [];
-//       for (let word = 0; word <= 10; word += 1) {
-//         if (word === line) {
-//           words.push(baseUppercaseLeadingSpaces()[word]);
-//           words.push(baseUppercase()[word]);
-//         }
-//       }
-//       lines.push(words.join(" "));
-//     }
-//     results.push(lines.join("\n"));
-//   }
-//   return results;
-// }
-
 function setList() {
   return [
+
+    // Three columns of pairs
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Word pair justify on center outside
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
 
     // File columns lowercase left justified
     () => {
@@ -533,25 +558,6 @@ function baseDots() {
 }
 
 
-
-function set10() {
-  const results = [];
-  for (let page = 1; page < 10; page += 1) {
-    let lines = [];
-    for (let line = 0; line <= page; line += 1) {
-      let words = [];
-      for (let word = 0; word <= 10; word += 1) {
-        if (word === line) {
-          words.push(baseUppercaseTrailingSpaces()[word]);
-          words.push(baseUppercaseLeadingSpaces()[word]);
-        }
-      }
-      lines.push(words.join(" "));
-    }
-    results.push(lines.join("\n"));
-  }
-  return results;
-}
 
 function set11() {
   const results = [];
