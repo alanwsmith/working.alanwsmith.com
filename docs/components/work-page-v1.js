@@ -15,33 +15,33 @@ function baseLowercase() {
 }
 
 // All uppercase
-function base2() {
+function baseUppercase() {
   return baseLowercase().map((v) => { return v.toUpperCase() });
 }
 
 // Capital case
-function base3() {
+function baseCapital() {
   return baseLowercase().map((v) => { 
     return String(v).charAt(0).toUpperCase() + String(v).slice(1);
   });
 }
 
 // letters replaced with underscores
-function base4() {
+function baseUnderscore() {
   return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '_');
   });
 }
 
 // first letter lowercase followed by uppercase
-function base5() {
+function baseLowerThenUppercase() {
   return baseLowercase().map((v) => { 
     return String(v).charAt(0).toLowerCase() + String(v).slice(1).toUpperCase();
   });
 }
 
 // reversed lower case
-function base6() {
+function baseLowercaseReversed() {
   return baseLowercase().map((v) => {
     return v.split('').reverse().join('');
   });
@@ -55,7 +55,7 @@ function baseSpaces() {
 }
 
 // letters replaced with hashtags 
-function base8() {
+function baseHashtags() {
   return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '#');
   });
@@ -63,7 +63,7 @@ function base8() {
 
 function set1() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let pages = 0; pages < 10; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       text += `${baseLowercase().join(' ')}\n`;
@@ -73,16 +73,15 @@ function set1() {
   return results;
 }
 
-
 function set2() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let pages = 0; pages < 10; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       if (lines % 2 === 1) {
         text += `${baseLowercase().join(' ')}\n`;
       } else {
-        text += `${base2().join(' ')}\n`;
+        text += `${baseUppercase().join(' ')}\n`;
       }
     }
     results.push(text);
@@ -92,10 +91,10 @@ function set2() {
 
 function set3() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let pages = 0; pages < 10; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
-      text += `${base2().join(' ')}\n`;
+      text += `${baseUppercase().join(' ')}\n`;
     }
     results.push(text);
   }
@@ -104,13 +103,13 @@ function set3() {
 
 function set4() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let pages = 0; pages < 10; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       let words = [];
       for (let word = 0; word <= baseLowercase().length; word += 1) {
         if ((lines + word) % 2 === 0) {
-          words.push(base2()[word]);
+          words.push(baseUppercase()[word]);
         } else {
           words.push(baseLowercase()[word]);
         }
@@ -124,7 +123,7 @@ function set4() {
 
 function set5() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let pages = 0; pages < 10; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       let words = [];
@@ -144,13 +143,13 @@ function set5() {
 
 function set6() {
   const results = [];
-  for (let page = 0; page < 6; page += 1) {
+  for (let page = 0; page < 10; page += 1) {
     let text = "";
     for (let line = 0; line <= page; line += 1) {
       let words = [];
       for (let word = 0; word <= baseLowercase().length; word += 1) {
         if ((line + word) % 2 === 0) {
-          words.push(base2()[word]);
+          words.push(baseUppercase()[word]);
         } else {
           words.push(baseSpaces()[word]);
         }
@@ -170,7 +169,7 @@ function set7() {
       let words = [];
       for (let word = 0; word <= baseLowercase().length; word += 1) {
         if (word === line) {
-          words.push(base2()[word]);
+          words.push(baseUppercase()[word]);
         }
       }
       lines.push(words.join(" "));
