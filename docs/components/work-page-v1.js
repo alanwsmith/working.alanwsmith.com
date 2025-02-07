@@ -1,13 +1,46 @@
 const maxCharactersPerLine = 52;
 const maxLinesPerPage = 14;
 let debug = true;
-// debug = false;
-
+debug = false;
 
 function setList() {
   return [
 
-    // 
+    // lower case strings with asterisks 
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseLowercase()[word]);
+          }
+          lines.push(words.join('*'));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // lower case strings no spaces
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseLowercase()[word]);
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // block with lowercase single words
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -350,7 +383,6 @@ function setList() {
       return pages;
     },
 
-
     // Three columns of pairs
     () => {
       const pages = [];
@@ -591,7 +623,6 @@ function setList() {
       return pages;
     },
 
-
     // Single column uppercase with random right padding
     () => {
       const pages = [];
@@ -625,40 +656,6 @@ function setList() {
             } else {
               words.push(baseUppercase()[word]);
             }
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
-
-    // BASE: lower case strings
-    () => {
-      const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= page; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            words.push(baseLowercase()[word]);
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
-
-    // upper case strings
-    () => {
-      const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= page; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            words.push(baseUppercase()[word]);
           }
           lines.push(words.join(' '));
         }
@@ -708,7 +705,6 @@ function setList() {
       }
       return pages;
     },
-
 
     // spaces at mod 3
     () => {
@@ -770,6 +766,40 @@ function setList() {
                 words.push(baseSpaces()[word]);
               }
             }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // BASE: upper case strings
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseUppercase()[word]);
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // BASE: lower case strings
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseLowercase()[word]);
           }
           lines.push(words.join(' '));
         }
@@ -1244,8 +1274,18 @@ class WorkPage extends HTMLElement {
     this.allowFrequentBolds = hitRandom(9);
     this.allowEmphasis = hitRandom(7);
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
-      const words = theLines[lineIndex].split(' ');
-      await this.outputWords(words);
+      // handle the different splitters start 
+      // with space then fallback. note that this
+      // may break things where you have sinlge
+      // lines with asterisks. TODO: check that.
+      let words = theLines[lineIndex].split(' ');
+      if (words.length === 1) {
+        words = theLines[lineIndex].split('*');
+        await this.outputWords(words, '*');
+      } else {
+        await this.outputWords(words, ' ');
+      }
+
       this.content.innerHTML += "\n";
       if (this.completedFirstWrite) {
         await sleep(randomNumberBetween(60, 260));
@@ -1257,7 +1297,7 @@ class WorkPage extends HTMLElement {
     this.completedFirstWrite = true;
   }
 
-  async outputWords(words) {
+  async outputWords(words, joiner) {
     for (let i = 0; i < words.length; i += 1) {
       if (this.allowFrequentBolds === true && hitRandom(3) === false) {
         this.content.innerHTML += `<strong>${words[i]}</strong>`;
@@ -1269,7 +1309,7 @@ class WorkPage extends HTMLElement {
        this.content.innerHTML += words[i];
       }
       if (i !== words.length - 1) {
-        this.content.innerHTML +=  " ";
+        this.content.innerHTML +=  joiner;
       }
       // await sleep(10);
     }
