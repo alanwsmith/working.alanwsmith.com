@@ -5,10 +5,27 @@ const debug = true;
 function setList() {
   return [
 
+    // Six columns left justified uppercase
+    () => {
+      const pages = [];
+      for (let page = 0; page < 1; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 6; word += 1) {
+            words.push(baseUppercaseTrailingSpaces()[line]);
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Six columns left justified lowercase
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < 1; page += 1) {
         const lines = [];
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
@@ -22,22 +39,6 @@ function setList() {
       return pages;
     },
 
-    // Six columns left justified uppercase
-    () => {
-      const pages = [];
-      for (let page = 0; page < 10; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= 10; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 6; word += 1) {
-            words.push(baseUppercaseTrailingSpaces()[line]);
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
 
     // Three columns of pairs
     () => {
@@ -984,6 +985,7 @@ class WorkPage extends HTMLElement {
       await sleep(randomNumberBetween(400, 900));
     }
     this.allowBolds = hitRandom(4);
+    this.allowFrequentBolds = hitRandom(9);
     this.allowEmphasis = hitRandom(7);
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
@@ -1001,7 +1003,9 @@ class WorkPage extends HTMLElement {
 
   async outputWords(words) {
     for (let i = 0; i < words.length; i += 1) {
-      if (this.allowBolds === true && hitRandom(7) === true) {
+      if (this.allowFrequentBolds === true && hitRandom(3) === false) {
+        this.content.innerHTML += `<strong>${words[i]}</strong>`;
+      } else if (this.allowBolds === true && hitRandom(7) === true) {
         this.content.innerHTML += `<strong>${words[i]}</strong>`;
       } else if (this.allowEmphasis === true && hitRandom(9) === true) {
         this.content.innerHTML += `<em>${words[i]}</em>`;
