@@ -1,5 +1,5 @@
 // All lowercase
-function base1() {
+function baseLowercase() {
   return [
     `all`,
     `work`,
@@ -16,47 +16,47 @@ function base1() {
 
 // All uppercase
 function base2() {
-  return base1().map((v) => { return v.toUpperCase() });
+  return baseLowercase().map((v) => { return v.toUpperCase() });
 }
 
 // Capital case
 function base3() {
-  return base1().map((v) => { 
+  return baseLowercase().map((v) => { 
     return String(v).charAt(0).toUpperCase() + String(v).slice(1);
   });
 }
 
 // letters replaced with underscores
 function base4() {
-  return base1().map((v) => {
+  return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '_');
   });
 }
 
 // first letter lowercase followed by uppercase
 function base5() {
-  return base1().map((v) => { 
+  return baseLowercase().map((v) => { 
     return String(v).charAt(0).toLowerCase() + String(v).slice(1).toUpperCase();
   });
 }
 
 // reversed lower case
 function base6() {
-  return base1().map((v) => {
+  return baseLowercase().map((v) => {
     return v.split('').reverse().join('');
   });
 }
 
 // letters replaced with spaces 
 function baseSpaces() {
-  return base1().map((v) => {
+  return baseLowercase().map((v) => {
     return v.replaceAll(/./g, ' ');
   });
 }
 
 // letters replaced with hashtags 
 function base8() {
-  return base1().map((v) => {
+  return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '#');
   });
 }
@@ -66,7 +66,7 @@ function set1() {
   for (let pages = 0; pages < 6; pages += 1) {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
-      text += `${base1().join(' ')}\n`;
+      text += `${baseLowercase().join(' ')}\n`;
     }
     results.push(text);
   }
@@ -80,7 +80,7 @@ function set2() {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       if (lines % 2 === 1) {
-        text += `${base1().join(' ')}\n`;
+        text += `${baseLowercase().join(' ')}\n`;
       } else {
         text += `${base2().join(' ')}\n`;
       }
@@ -108,11 +108,11 @@ function set4() {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       let words = [];
-      for (let word = 0; word <= base1().length; word += 1) {
+      for (let word = 0; word <= baseLowercase().length; word += 1) {
         if ((lines + word) % 2 === 0) {
           words.push(base2()[word]);
         } else {
-          words.push(base1()[word]);
+          words.push(baseLowercase()[word]);
         }
       }
       text += `${words.join(" ")}\n`;
@@ -128,11 +128,11 @@ function set5() {
     let text = "";
     for (let lines = 0; lines <= pages; lines += 1) {
       let words = [];
-      for (let word = 0; word <= base1().length; word += 1) {
+      for (let word = 0; word <= baseLowercase().length; word += 1) {
         if ((lines + word) % 2 === 0) {
           words.push(baseSpaces()[word]);
         } else {
-          words.push(base1()[word]);
+          words.push(baseLowercase()[word]);
         }
       }
       text += `${words.join(" ")}\n`;
@@ -144,12 +144,12 @@ function set5() {
 
 function set6() {
   const results = [];
-  for (let pages = 0; pages < 6; pages += 1) {
+  for (let page = 0; page < 6; page += 1) {
     let text = "";
-    for (let lines = 0; lines <= pages; lines += 1) {
+    for (let line = 0; line <= page; line += 1) {
       let words = [];
-      for (let word = 0; word <= base1().length; word += 1) {
-        if ((lines + word) % 2 === 0) {
+      for (let word = 0; word <= baseLowercase().length; word += 1) {
+        if ((line + word) % 2 === 0) {
           words.push(base2()[word]);
         } else {
           words.push(baseSpaces()[word]);
@@ -162,14 +162,13 @@ function set6() {
   return results;
 }
 
-
 function set7() {
   const results = [];
-  for (let page = 3; page < 10; page += 1) {
+  for (let page = 1; page < 10; page += 1) {
     let lines = [];
     for (let line = 0; line <= page; line += 1) {
       let words = [];
-      for (let word = 0; word <= base1().length; word += 1) {
+      for (let word = 0; word <= baseLowercase().length; word += 1) {
         if (word === line) {
           words.push(base2()[word]);
         }
@@ -182,15 +181,14 @@ function set7() {
 }
 
 
-
 const sets = [
   set7(),
-  // set6(),
-  // set5(),
-  // set4(),
-  // set3(),
-  // set2(),
-  // set1(),
+  set6(),
+  set5(),
+  set4(),
+  set3(),
+  set2(),
+  set1(),
 ]; 
 
 function shuffle(array) {
