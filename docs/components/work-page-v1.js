@@ -156,7 +156,7 @@ class WorkPage extends HTMLElement {
       this.pageOrder.push(id);
     }
     this.pageOrder.reverse();
-    // shuffle(this.pageOrder);
+    shuffle(this.pageOrder);
   }
 
 
@@ -229,9 +229,8 @@ class WorkPage extends HTMLElement {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
       this.content.innerHTML += "\n";
-      await sleep(50);
+      await sleep(60);
     }
-
     await sleep(500);
   }
 
@@ -241,10 +240,9 @@ class WorkPage extends HTMLElement {
       if (i !== words.lenght - 1) {
         this.content.innerHTML +=  " ";
       }
-      await sleep(30);
+      await sleep(10);
     }
   }
-
 
 }
 
