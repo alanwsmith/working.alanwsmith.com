@@ -10,6 +10,10 @@ function hitRandom(num) {
   }
 }
 
+function randomNumberBetween (min, max) { 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 
 // All lowercase
 function baseLowercase() {
@@ -861,7 +865,7 @@ class WorkPage extends HTMLElement {
     });
     this.content.innerHTML = `${lineString}\n`;
     if (this.completedFirstWrite) {
-      await sleep(300);
+      await sleep(randomNumberBetween(400, 900));
     }
     this.allowBolds = hitRandom(4);
     this.allowEmphasis = hitRandom(7);
@@ -870,11 +874,11 @@ class WorkPage extends HTMLElement {
       await this.outputWords(words);
       this.content.innerHTML += "\n";
       if (this.completedFirstWrite) {
-        await sleep(60);
+        await sleep(randomNumberBetween(60, 260));
       }
     }
     if (this.completedFirstWrite) {
-      await sleep(200);
+      await sleep(randomNumberBetween(700, 1800));
     }
     this.completedFirstWrite = true;
   }
