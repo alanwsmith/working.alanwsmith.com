@@ -102,6 +102,14 @@ function baseHashtags() {
   });
 }
 
+// letters replaced with dots 
+function baseDots() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '.');
+  });
+}
+
+
 function set1() {
   const pages = [];
   for (let page = 0; page < maxLinesPerPage; page += 1) {
@@ -354,6 +362,7 @@ function set14() {
   return results;
 }
 
+// replace some words with hashtags
 function set15() {
   const pages = [];
   for (let page = 0; page < maxLinesPerPage; page += 1) {
@@ -374,8 +383,52 @@ function set15() {
   return pages;
 }
 
+// replace some words with dots 
+function set16() {
+  const pages = [];
+  for (let page = 0; page < maxLinesPerPage; page += 1) {
+    const lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      const words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if(hitRandom(7)) {
+          words.push(baseDots()[word]);
+        } else {
+          words.push(baseLowercase()[word]);
+        }
+      }
+      lines.push(words.join(' '));
+    }
+    pages.push(lines.join("\n"));
+  }
+  return pages;
+}
+
+// replace some words with dots heavy
+function set17() {
+  const pages = [];
+  for (let page = 0; page < maxLinesPerPage; page += 1) {
+    const lines = [];
+    for (let line = 0; line <= page; line += 1) {
+      const words = [];
+      for (let word = 0; word <= 10; word += 1) {
+        if(hitRandom(12)) {
+          words.push(baseLowercase()[word]);
+        } else {
+          words.push(baseDots()[word]);
+        }
+      }
+      lines.push(words.join(' '));
+    }
+    pages.push(lines.join("\n"));
+  }
+  return pages;
+}
+
 const pageSets = [
-  set15(),
+  set17(),
+  // set16(),
+  // set15(),
   // set14(),
   // set13(),
   // set12(),
