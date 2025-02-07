@@ -4,6 +4,48 @@ const maxLinesPerPage = 14;
 function setList() {
   return [
 
+    // Single column uppercase with random underscores on both sides
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const leftPadding = randomUnderscoresBetween(0, 18);
+        const rightPadding = randomUnderscoresBetween(0, 18);
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+            }
+          }
+          lines.push(leftPadding + words.join(' ') + rightPadding);
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Single column uppercase with random leading underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const leftPadding = randomUnderscoresBetween(0, 20);
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(leftPadding + words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
     // Single column uppercase with random right padding with dots
     () => {
       const pages = [];
@@ -239,6 +281,11 @@ function randomDotsBetween (min, max) {
   return theSpaces;
 }
 
+function randomUnderscoresBetween (min, max) { 
+  const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
+  const theSpaces = Array(spaceCount).fill('_').join('');
+  return theSpaces;
+}
 
 // All lowercase
 function baseLowercase() {
