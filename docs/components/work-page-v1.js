@@ -4,7 +4,47 @@ const maxLinesPerPage = 14;
 function setList() {
   return [
 
-    // uppercase or spaces 
+    // Single column uppercase with random right padding with dots
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const rightPadding = randomDotsBetween(0, 20);
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' ') + rightPadding);
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Single column uppercase with random right padding
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const rightPadding = randomSpacesBetween(0, 20);
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' ') + rightPadding);
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Uppercase or spaces 
     () => {
       const pages = [];
       for (let page = 0; page < maxLinesPerPage; page += 1) {
@@ -25,7 +65,7 @@ function setList() {
       return pages;
     },
 
-    // lower case strings
+    // BASE: lower case strings
     () => {
       const pages = [];
       for (let page = 0; page < maxLinesPerPage; page += 1) {
@@ -170,7 +210,6 @@ function setList() {
       return pages;
     },
 
-
   ]
 }
 
@@ -185,7 +224,19 @@ function hitRandom(num) {
 }
 
 function randomNumberBetween (min, max) { 
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function randomSpacesBetween (min, max) { 
+  const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
+  const theSpaces = Array(spaceCount).fill(' ').join('');
+  return theSpaces;
+}
+
+function randomDotsBetween (min, max) { 
+  const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
+  const theSpaces = Array(spaceCount).fill('.').join('');
+  return theSpaces;
 }
 
 
@@ -392,23 +443,23 @@ function baseDots() {
 //   return results;
 // }
 
-function set7() {
-  const results = [];
-  for (let page = 1; page < 10; page += 1) {
-    let lines = [];
-    for (let line = 0; line <= page; line += 1) {
-      let words = [];
-      for (let word = 0; word <= 10; word += 1) {
-        if (word === line) {
-          words.push(baseUppercase()[word]);
-        }
-      }
-      lines.push(words.join(" "));
-    }
-    results.push(lines.join("\n"));
-  }
-  return results;
-}
+// function set7() {
+//   const results = [];
+//   for (let page = 1; page < 10; page += 1) {
+//     let lines = [];
+//     for (let line = 0; line <= page; line += 1) {
+//       let words = [];
+//       for (let word = 0; word <= 10; word += 1) {
+//         if (word === line) {
+//           words.push(baseUppercase()[word]);
+//         }
+//       }
+//       lines.push(words.join(" "));
+//     }
+//     results.push(lines.join("\n"));
+//   }
+//   return results;
+// }
 
 function set8() {
   const results = [];
