@@ -11,17 +11,24 @@ function shuffle(array) {
   }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const componentSheet = new CSSStyleSheet();
 componentSheet.replaceSync(`
 :host {
   display: inline-block;
-  padding: 0.2rem;
+  padding: 0.3rem;
 }
 
 .page-wrapper {
+  box-sizing: border-box;
   height: 100%;
-  background: #987;
+  background: #333;
+  padding: 0.4rem;
 }
+
 
 `);
 
@@ -51,35 +58,42 @@ class WorkPage extends HTMLElement {
     const pageId = this.pageOrder.pop();
     const format = this.formats.pop()
     const el = this.instances[pageId];
-    await el.writePage(format);
+    await el.writePage();
     //console.log(el);
     //el.shadowRoot.innerHTML = format;
   }
 
-  static updatePages() {
+  static async updatePages() {
     for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
-      this.updatePage()
+      await this.updatePage()
     }
   }
 
   static formats = [
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
-    'alfa', 'bravo', 'charlie', 'delta',
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
+    'alfa', 'bravo', 'charlie', 'delta', 'echo', 
   ];
+
+  static shuffleFormats() {
+    // TODO: Make the different formats here
+    // and set them in in chunks so the
+    // show up in the right order per section
+  }
 
   static kickoff() {
     console.log('kicking off');
+    this.shuffleFormats();
     this.updatePageOrder();
     this.updatePages();
   }
@@ -105,14 +119,17 @@ class WorkPage extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.shadowRoot.adoptedStyleSheets = [componentSheet];
     this.constructor.register(this);
+    this.content = this.shadowRoot.querySelector('.page-wrapper');
   }
 
   disconnectedCallback() {
     this.constructor.deregister(this);
   }
 
-  async writePage(format) {
-    this.shadowRoot.innerHTML = `Writing: ${format}`;
+
+  async writePage() {
+    this.content.innerHTML = `Writing: ${this.constructor.formats[this.dataset.index]}`;
+    await sleep(100);
   }
 
 }
