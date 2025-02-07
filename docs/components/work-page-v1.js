@@ -7,6 +7,38 @@ let debug = true;
 function setList() {
   return [
 
+    // Single Words
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const words = [];
+          //for (let word = 0; word <= 10; word += 1) {
+        words.push(baseUppercase()[page]);
+          //}
+        lines.push(words.join(' '));
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Single Column With Single Word
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          //for (let word = 0; word <= 10; word += 1) {
+            words.push(baseUppercase()[page]);
+          //}
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // All Work Makes Dull Boy With Underscores
     () => {
       const pages = [];
