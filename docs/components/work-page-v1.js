@@ -211,6 +211,53 @@ function setList() {
     },
 
 
+    // words and spaces pattern
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if ((word + line) % 2 === 1) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseLowercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // words and spaces pattern
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if ((word + line) % 2 === 1) {
+              words.push(baseSpaces()[word]);
+            } else {
+              if (hitRandom(4)) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
   ]
 }
 
