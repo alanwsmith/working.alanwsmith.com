@@ -6,6 +6,110 @@ let debug = true;
 function setList() {
   return [
 
+    // Bottom Line With Hashtags 
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === targetLine) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (word === page ) {
+                  words.push(baseHashtags()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    // Bottom Line With dots 
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === targetLine) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (word === page ) {
+                  words.push(baseDots()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    // Bottom Line With Underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 9) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (word === page ) {
+                words.push(baseUnderscore()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Top Line With Underscores
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 0) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (word === page ) {
+                words.push(baseUnderscore()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Crosses With Dot Fills
     () => {
       const pages = [];
@@ -1436,7 +1540,7 @@ class WorkPage extends HTMLElement {
       }
     }
     if (this.completedFirstWrite) {
-      await sleep(randomNumberBetween(700, 1800));
+      await sleep(randomNumberBetween(500, 1200));
     }
     this.completedFirstWrite = true;
   }
