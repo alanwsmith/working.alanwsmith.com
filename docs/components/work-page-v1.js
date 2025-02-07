@@ -606,13 +606,14 @@ class WorkPage extends HTMLElement {
       }
     });
     this.content.innerHTML = `${lineString}\n`;
+    await sleep(300);
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       const words = theLines[lineIndex].split(' ');
       await this.outputWords(words);
       this.content.innerHTML += "\n";
       await sleep(60);
     }
-    await sleep(400);
+    await sleep(200);
   }
 
   async outputWords(words) {
