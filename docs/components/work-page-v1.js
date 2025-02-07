@@ -1,3 +1,5 @@
+const maxCharactersPerLine = 48;
+
 // All lowercase
 function baseLowercase() {
   return [
@@ -338,7 +340,7 @@ function set14() {
 }
 
 
-const sets = [
+const pageSets = [
   // set14(),
   // set13(),
   // set12(),
@@ -438,7 +440,7 @@ class WorkPage extends HTMLElement {
     for (let pageCount = 0; pageCount < this.pageCount(); pageCount += 1) {
       await this.updatePage()
     }
-    this.kickoff();
+    this.startRun();
   }
 
   static formats = [];
@@ -450,17 +452,90 @@ class WorkPage extends HTMLElement {
     return this.formats.pop();
   }
 
+  static loadSets() {
+    console.log('loadSets');
+    this.sets = pageSets;
+    this.padSetsLeft();
+  }
+
+  static padSetsLeft() {
+    pageSets.forEach((pageSet) => {
+      pageSet.forEach((page) => {
+        const lines = page.split("\n");
+        let maxLineLength = 0;
+        lines.forEach((line) => {
+          const lineLength = line.split('').length;
+          if (maxLineLength < lineLength) {
+            maxLineLength = lineLength;
+          }
+        });
+
+        if (maxLineLength < maxCharactersPerLine) {
+          // pageSet.forEach((page) => {
+          let newPageSet = [];
+          let newPage = [];
+          let newLines = [];
+          page.split("\n").forEach((line) => {
+            let characters = line.split('').reverse();
+            for (let addIndex = maxLineLength; addIndex < maxCharactersPerLine; addIndex += 1) {
+              characters.push(" ")
+            }
+            newLines.push(characters.reverse().join(''));
+          });
+          newPageSet.push(newLines.join("\n"));
+          // newPageSet.push(newPage);
+          // console.log(this.sets[0]);
+          // console.log(newPageSet);
+          // newPageSet.push(newPage);
+          console.log(newPageSet);
+          this.sets.push(newPageSet);
+        }
+      });
+    });
+
+
+
+
+        //if (maxLineLength < maxCharactersPerLine) {
+        //  let newPageSet = [];
+        //  pageSets.forEach((pageSet) => {
+        //    let newPage = [];
+        //    pageSet.forEach((page) => {
+        //      let newLines = [];
+        //      page.split("\n").forEach((line) => {
+        //        let characters = line.split('').reverse();
+        //        for (let addIndex = maxLineLength; addIndex < maxCharactersPerLine; addIndex += 1) {
+        //          characters.push(" ")
+        //        }
+        //        newLines.push(characters.reverse().join(''));
+        //      });
+        //      newPage.push(newLines.join("\n"));
+        //    });
+        //    newPageSet.push(newPage);
+        //  });
+        //  console.log(newPageSet);
+        //  console.log(this.sets[0]);
+        //  //this.sets.push(newPageSet);
+        //}
+
+  }
+
   static shuffleFormats() {
     console.log('shuffleFormats');
     this.formats = [];
-    for (let setIndex = 0; setIndex < sets.length; setIndex += 1) {
-      this.formats.push(...sets[setIndex]);
+    for (let setIndex = 0; setIndex < this.sets.length; setIndex += 1) {
+      this.formats.push(...this.sets[setIndex]);
     }
     shuffle(this.formats);
   }
 
   static kickoff() {
-    console.log('kicking off');
+    console.log('kickoff');
+    this.loadSets();
+    this.startRun();
+  }
+
+  static startRun() {
     this.updatePageOrder();
     this.updatePages();
   }
