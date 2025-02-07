@@ -111,6 +111,8 @@ function baseDots() {
 
 function setList() {
   return [
+
+    // lower case strings
     () => {
       const pages = [];
       for (let page = 0; page < maxLinesPerPage; page += 1) {
@@ -125,7 +127,26 @@ function setList() {
         pages.push(lines.join("\n"));
       }
       return pages;
-    }
+    },
+
+    // upper case strings
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseUppercase()[word]);
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
   ]
 }
 
