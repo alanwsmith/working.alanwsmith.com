@@ -640,7 +640,8 @@ componentSheet.replaceSync(`
 }
 
 .written {
-  background: #555;
+  background: #ddd;
+  color: black;
 }
 
 `);
@@ -696,9 +697,9 @@ class WorkPage extends HTMLElement {
   static baseSets() {
     let theSets = [];
     setList().forEach((setItem, setIndex) => {
-      if (setIndex === setList().length - 1) {
+      //if (setIndex === setList().length - 1) {
         theSets.push(setItem());
-      }
+      //}
     });
     return theSets;
   }
