@@ -7,6 +7,50 @@ let debug = true;
 function setList() {
   return [
 
+    // 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            // skip makes since it overflows
+            if (page !== 5) {
+              words.push(baseLowercase()[page]);
+            } else {
+              words.push(baseLowercase()[0]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Blocks with upper case single words skipping makes
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            // skip makes since it overflows
+            if (page !== 5) {
+              words.push(baseUppercase()[page]);
+            } else {
+              words.push(baseUppercase()[page - 1]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Single Words
     () => {
       const pages = [];
