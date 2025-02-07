@@ -1,4 +1,4 @@
-const maxCharactersPerLine = 48;
+const maxCharactersPerLine = 52;
 
 // All lowercase
 function baseLowercase() {
@@ -341,20 +341,20 @@ function set14() {
 
 
 const pageSets = [
-  // set14(),
-  // set13(),
-  // set12(),
-  // set11(),
-  // set10(),
-  // set9(),
-  // set8(),
-  // set7(),
-  // set6(),
-  // set5(),
-  // set4(),
-  // set3(),
+  set14(),
+  set13(),
+  set12(),
+  set11(),
+  set10(),
+  set9(),
+  set8(),
+  set7(),
+  set6(),
+  set5(),
+  set4(),
+  set3(),
   set2(),
-  // set1(),
+  set1(),
 ]; 
 
 function shuffle(array) {
@@ -456,6 +456,7 @@ class WorkPage extends HTMLElement {
     console.log('loadSets');
     this.sets = pageSets;
     this.padSetsLeft();
+    this.padSetsRight();
   }
 
   static padSetsLeft() {
@@ -486,6 +487,36 @@ class WorkPage extends HTMLElement {
       });
     });
   }
+
+  static padSetsRight() {
+    pageSets.forEach((pageSet) => {
+      pageSet.forEach((page) => {
+        const lines = page.split("\n");
+        let maxLineLength = 0;
+        lines.forEach((line) => {
+          const lineLength = line.split('').length;
+          if (maxLineLength < lineLength) {
+            maxLineLength = lineLength;
+          }
+        });
+        if (maxLineLength < maxCharactersPerLine) {
+          let newPageSet = [];
+          let newPage = [];
+          let newLines = [];
+          page.split("\n").forEach((line) => {
+            let characters = line.split('');
+            for (let addIndex = maxLineLength; addIndex < maxCharactersPerLine; addIndex += 1) {
+              characters.push(" ")
+            }
+            newLines.push(characters.join(''));
+          });
+          newPageSet.push(newLines.join("\n"));
+          this.sets.push(newPageSet);
+        }
+      });
+    });
+  }
+
 
   static shuffleFormats() {
     console.log('shuffleFormats');
@@ -567,7 +598,7 @@ class WorkPage extends HTMLElement {
       if (i !== words.length - 1) {
         this.content.innerHTML +=  " ";
       }
-      await sleep(10);
+      // await sleep(10);
     }
   }
 
