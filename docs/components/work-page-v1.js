@@ -4,6 +4,27 @@ const maxLinesPerPage = 14;
 function setList() {
   return [
 
+    // uppercase or spaces 
+    () => {
+      const pages = [];
+      for (let page = 0; page < maxLinesPerPage; page += 1) {
+        const lines = [];
+        for (let line = 0; line <= page; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(6)) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // lower case strings
     () => {
       const pages = [];
@@ -351,25 +372,25 @@ function baseDots() {
 //   return results;
 // }
 
-function set6() {
-  const results = [];
-  for (let page = 0; page < 10; page += 1) {
-    let text = "";
-    for (let line = 0; line <= page; line += 1) {
-      let words = [];
-      for (let word = 0; word <= baseLowercase().length; word += 1) {
-        if ((line + word) % 2 === 0) {
-          words.push(baseUppercase()[word]);
-        } else {
-          words.push(baseSpaces()[word]);
-        }
-      }
-      text += `${words.join(" ")}\n`;
-    }
-    results.push(text);
-  }
-  return results;
-}
+// function set6() {
+//   const results = [];
+//   for (let page = 0; page < 10; page += 1) {
+//     let text = "";
+//     for (let line = 0; line <= page; line += 1) {
+//       let words = [];
+//       for (let word = 0; word <= baseLowercase().length; word += 1) {
+//         if ((line + word) % 2 === 0) {
+//           words.push(baseUppercase()[word]);
+//         } else {
+//           words.push(baseSpaces()[word]);
+//         }
+//       }
+//       text += `${words.join(" ")}\n`;
+//     }
+//     results.push(text);
+//   }
+//   return results;
+// }
 
 function set7() {
   const results = [];
@@ -702,9 +723,9 @@ class WorkPage extends HTMLElement {
   static baseSets() {
     let theSets = [];
     setList().forEach((setItem, setIndex) => {
-      //if (setIndex === setList().length - 1) {
+      if (setIndex === 0) {
         theSets.push(setItem());
-      //}
+      }
     });
     return theSets;
   }
