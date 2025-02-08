@@ -6,7 +6,70 @@ let debug = true;
 function setList() {
   return [
 
-    // Bottom Line With Hashtags 
+
+    // Border HashTags With Random Words Inside
+    () => {
+      const pages = [];
+      //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === 0 || line == 11) {
+                words.push(baseHashtags()[word]);
+              } else {
+                if (word === 0 || word === 9) {
+                  words.push(baseHashtags()[word]);
+                } else {
+                  if (hitRandom(3)) {
+                    words.push(baseLowercase()[word]);
+                  } else {
+                    words.push(baseSpaces()[word]);
+                  }
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      //}
+      return pages;
+    },
+
+    // Border Columns With Random Words Inside
+    () => {
+      const pages = [];
+      //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === 0 || line == 11) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (word === 0 || word === 9) {
+                  words.push(baseUppercase()[word]);
+                } else {
+                  if (hitRandom(3)) {
+                    words.push(baseLowercase()[word]);
+                  } else {
+                    words.push(baseSpaces()[word]);
+                  }
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      //}
+      return pages;
+    },
+
+    // Target Line With Hashtags 
     () => {
       const pages = [];
       for (let targetLine = 0; targetLine < 10; targetLine += 1) {
@@ -1281,10 +1344,10 @@ componentSheet.replaceSync(`
   justify-content: center;
   box-sizing: border-box;
   height: 100%;
-  font-size: 0.6rem;
   overflow-x: clip;
   overflow-y: clip;
   padding-block: 0.2rem;
+  font-size: var(--wrapper-font-size);
 }
 
 .content {
@@ -1493,8 +1556,16 @@ class WorkPage extends HTMLElement {
     this.shadowRoot.adoptedStyleSheets = [componentSheet];
     this.wrapper = this.shadowRoot.querySelector('.wrapper');
     this.content = this.shadowRoot.querySelector('.content');
+    this.setFontSize();
     this.constructor.register(this);
     this.completedFirstWrite = false;
+  }
+
+  setFontSize() {
+    const rect = this.wrapper.getBoundingClientRect();
+    const width = Math.floor(rect.width);
+    const size = width * 0.00176;
+    this.style.setProperty('--wrapper-font-size', `${size}rem`);
   }
 
   disconnectedCallback() {
@@ -1536,11 +1607,11 @@ class WorkPage extends HTMLElement {
 
       this.content.innerHTML += "\n";
       if (this.completedFirstWrite) {
-        await sleep(randomNumberBetween(60, 260));
+        await sleep(randomNumberBetween(30, 100));
       }
     }
     if (this.completedFirstWrite) {
-      await sleep(randomNumberBetween(500, 1200));
+      await sleep(randomNumberBetween(300, 700));
     }
     this.completedFirstWrite = true;
   }

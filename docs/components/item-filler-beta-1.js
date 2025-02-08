@@ -194,7 +194,16 @@ class ItemFiller extends HTMLElement {
   }
 
   itemTargetWidth() {
-    if (this.attributes['item-width']) {
+    if (this.attributes['item-min-width']) {
+      const minWidth = this.convertToPixels(this.attributes['item-min-width']);
+      for (let colCount = 1000; colCount >= this.minColumns(); colCount -= 1) {
+        const checkValue = Math.floor(this.parent.widthMinusPadding / colCount);
+
+        if (checkValue >= minWidth) {
+          return checkValue;
+        }
+      }
+    } else if (this.attributes['item-width']) {
       const parts = this.attributes['item-width'].split(':');
       if (parts.length === 1) {
         const maxWidth = Math.min(
@@ -333,4 +342,5 @@ class ItemFiller extends HTMLElement {
 }
 
 customElements.define('item-filler', ItemFiller)
+
 
