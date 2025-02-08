@@ -6,6 +6,54 @@ let debug = true;
 function setList() {
   return [
 
+    // Start and End lines with bridge dashes
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumber = randomNumberBetween(0, 9);
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 0 || line === 11) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseDots()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Start and End lines with bridge word
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumber = randomNumberBetween(0, 9);
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 0 || line === 11) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Horizontal Line With Underscores Plus first line
     () => {
       const pages = [];
