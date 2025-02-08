@@ -35,7 +35,9 @@
 
 body {
   background: black;
-  color: white;
+  color: #aaa;
+  background-image: url("/images/bg-wood-test.jpg");
+  background-size: cover;
 }
 
 footer {
@@ -52,15 +54,14 @@ footer {
     </style>
   </head>
 
-
   <body>
     
 
 <div class="work-wrapper">
   <item-filler
     :item="work-page"
-    :item-width="380px"
-    :item-height="260px"
+    :item-min-width="290px"
+    :item-height="5:3"
   ></item-filler>
 </div>
 
@@ -78,9 +79,6 @@ footer {
     </div>
   </footer>
 
-  <!--
-  <script type="module" src="/components/page-controller-v1.js"></script>
--->
   <script type="module" src="/components/item-filler-beta-1.js"></script>
   <script type="module" src="/components/work-page-v1.js"></script>
 </html>
