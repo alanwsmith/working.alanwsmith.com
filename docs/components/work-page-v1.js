@@ -949,7 +949,7 @@ function setList() {
           }
           lines.push(words.join('*'));
         }
-        if (page > 5) { 
+        if (page === 9) { 
           pages.push(lines.join("\n"));
         }
       }
@@ -967,9 +967,9 @@ function setList() {
           for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[word]);
           }
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
         }
-        if (page > 4) {
+        if (page === 9) {
           pages.push(lines.join("\n"));
         }
       }
@@ -2514,18 +2514,162 @@ function setList() {
       return pages;
     },
 
+
+    /////////////////////////////////////////////
+    // Index: 101
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLineWithDots(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 102
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word >= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLine(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 103
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word >= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLineWithDots(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 104
+    () => {
+      const pages = [];
+      const skipPages = [7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (line > 5) {
+              if (word >= line) {
+                words.push(baseLowercase()[page]);
+              }
+            } else {
+              if (word <= line) {
+                words.push(baseLowercase()[page]);
+              }
+            }
+          }
+          lines.push(centerLine(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 105
+    () => {
+      const pages = [];
+      const skipPages = [7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (line > 5) {
+              if (word >= line) {
+                words.push(baseLowercase()[page]);
+              }
+            } else {
+              if (word <= line) {
+                words.push(baseLowercase()[page]);
+              }
+            }
+          }
+          lines.push(centerLineWithDots(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
   ]
 }
 
 function centerLine(line) {
-  const characterCount = Math.round(line.split('').length / 2);
-  const leftPad = 21 - characterCount;
+  const characterCount = Math.floor(line.split('').length / 2);
+  const leftPad = 22 - characterCount;
   if (leftPad > 0) {
     return Array(leftPad).fill(' ').join('') + line;
   } else {
     return line;
   }
 }
+
+function centerLineWithDots(line) {
+  const characterCount = Math.floor(line.split('').length / 2);
+  const leftPad = 22 - characterCount;
+  const rightPad = leftPad - (line.split('').length % 2); 
+  if (leftPad > 0) {
+    return Array(leftPad).fill('.').join('') + line + Array(rightPad).fill('.').join('');
+  } else {
+    return line;
+  }
+}
+
+
 
 function hitRandom(num) {
   const checkNum = Math.floor(Math.random() *  num) +  1;
