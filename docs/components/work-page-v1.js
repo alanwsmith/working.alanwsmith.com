@@ -1749,14 +1749,15 @@ function setList() {
       return pages;
     },
 
-    // mixed case 
+    /////////////////////////////////////////////
+    // Index: 74
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(5)) {
               words.push(baseUppercase()[word]);
             } else {
@@ -1770,16 +1771,53 @@ function setList() {
       return pages;
     },
 
-    // even starting every other word is a space 
+    /////////////////////////////////////////////
+    // Index: 75
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
+        const randomWords = [
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+        ];
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (word % 2 === 0) {
-              words.push(baseSpaces()[word]);
+          for (let word = 0; word < 10; word += 1) {
+            if (randomWords.includes(word)) {
+              words.push(randomMarkFunction()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 76
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
+        const randomWords = [
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+        ];
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (randomWords.includes(word)) {
+              words.push(randomMarkFunction()[word]);
             } else {
               words.push(baseLowercase()[word]);
             }
@@ -1791,36 +1829,16 @@ function setList() {
       return pages;
     },
 
-    // spaces at mod 3
+
+    /////////////////////////////////////////////
+    // Index: 77
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (word % 3 === 1) {
-              words.push(baseSpaces()[word]);
-            } else {
-              words.push(baseLowercase()[word]);
-            }
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
-
-
-    // words and spaces pattern
-    () => {
-      const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= page; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if ((word + line) % 2 === 1) {
               words.push(baseSpaces()[word]);
             } else {
@@ -1829,27 +1847,26 @@ function setList() {
           }
           lines.push(words.join(' '));
         }
-        pages.push(lines.join("\n"));
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // words and spaces pattern
+    /////////////////////////////////////////////
+    // Index: 78
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if ((word + line) % 2 === 1) {
-              words.push(baseSpaces()[word]);
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(baseLowercase()[word]);
             } else {
-              if (hitRandom(4)) {
-                words.push(baseLowercase()[word]);
-              } else {
-                words.push(baseSpaces()[word]);
-              }
+              words.push(baseSpaces()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1859,15 +1876,21 @@ function setList() {
       return pages;
     },
 
-    // BASE: upper case strings
+    /////////////////////////////////////////////
+    // Index: 79
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            words.push(baseUppercase()[word]);
+          for (let word = 0; word < 10; word += 1) {
+            if (line == page) {
+              words.push(randomMarkFunction()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
           }
           lines.push(words.join(' '));
         }
@@ -1876,19 +1899,414 @@ function setList() {
       return pages;
     },
 
-    // BASE: lower case strings
+    /////////////////////////////////////////////
+    // Index: 80
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomMarkFunction = getRandomMarkFunction();
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
+            if (line == page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(randomMarkFunction()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 81
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
             if (line == page) {
               words.push(baseLowercase()[word]);
             } else {
               words.push(randomMarkFunction()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 82
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line == page) {
+              words.push(randomMarkFunction()[word]);
+            } else {
+              words.push(baseLowercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 83
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(randomMarkFunction()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 84
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line == page) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseLowercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page !== 0 && page !== 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 85
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(randomMarkFunction()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 86
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 87
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if ((word + line) % 2 === 0) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseLowercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 88
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if ((word + line) % 2 === 0) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 89
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if ((word + line) % 2 === 1) {
+              words.push(baseSpaces()[word]);
+            } else {
+              words.push(baseUppercase()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 90
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        for (let func = 0; func < markFunctions.length; func += 1) {
+          const randomMarkFunction = getRandomMarkFunction();
+          const lines = [];
+          for (let line = 0; line < 10; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if ((word + line) % 2 === 0) {
+                words.push(randomMarkFunction()[word]);
+              } else {
+                words.push(baseLowercase()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          if (page === 9) {
+            pages.push(lines.join("\n"));
+          }
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 91
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        for (let func = 0; func < markFunctions.length; func += 1) {
+          const randomMarkFunction = getRandomMarkFunction();
+          const lines = [];
+          for (let line = 0; line < 10; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if ((word + line) % 2 === 1) {
+                words.push(randomMarkFunction()[word]);
+              } else {
+                words.push(baseLowercase()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          if (page === 9) {
+            pages.push(lines.join("\n"));
+          }
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 92
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        for (let func = 0; func < markFunctions.length; func += 1) {
+          const randomMarkFunction = getRandomMarkFunction();
+          const lines = [];
+          for (let line = 0; line < 10; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if ((word + line) % 2 === 0) {
+                words.push(randomMarkFunction()[word]);
+              } else {
+                words.push(baseUppercase()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          if (page === 9) {
+            pages.push(lines.join("\n"));
+          }
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 93
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        for (let func = 0; func < markFunctions.length; func += 1) {
+          const randomMarkFunction = getRandomMarkFunction();
+          const lines = [];
+          for (let line = 0; line < 10; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if ((word + line) % 2 === 1) {
+                words.push(randomMarkFunction()[word]);
+              } else {
+                words.push(baseUppercase()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          if (page === 9) {
+            pages.push(lines.join("\n"));
+          }
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 94
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(6)) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 95
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(6)) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 96
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (hitRandom(randomNumberBetween(3,7))) {
+              words.push(baseLowercase()[word]);
+            } else if (hitRandom(randomNumberBetween(3,7))) {
+              words.push(randomMarkFunction()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1938,8 +2356,7 @@ function randomUnderscoresBetween (min, max) {
   return theSpaces;
 }
 
-function getRandomMarkFunction() {
-  let markFunctions = [
+const markFunctions = [
     baseAsterisks,
     baseBackSlashes,
     baseCarets,
@@ -1948,10 +2365,13 @@ function getRandomMarkFunction() {
     baseHashtags,
     basePipes,
     baseSlashes,
-    baseUnderscore,
-  ]
-  shuffle(markFunctions);
-  return markFunctions[0];
+    baseSpaces,
+];
+
+function getRandomMarkFunction() {
+  let funcs = markFunctions;
+  shuffle(funcs);
+  return funcs[0];
 }
 
 // All lowercase
