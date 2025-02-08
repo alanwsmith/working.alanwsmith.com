@@ -24,7 +24,7 @@ function setList() {
         //   randomNumberBetween(0, 9),
         //   9,
         // ]
-        const targetLines = [0, 11];
+        const targetLines = [0, 9];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
@@ -57,7 +57,7 @@ function setList() {
         //   randomNumberBetween(0, 9),
         //   9,
         // ]
-        const targetLines = [0, 11];
+        const targetLines = [0, 9];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
@@ -90,7 +90,7 @@ function setList() {
         //   randomNumberBetween(0, 9),
         //   9,
         // ]
-        const targetLines = [0, 11];
+        const targetLines = [0, 9];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
@@ -123,7 +123,7 @@ function setList() {
         //   randomNumberBetween(0, 9),
         //   9,
         // ]
-        const targetLines = [0, 11];
+        const targetLines = [0, 9];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
@@ -235,7 +235,7 @@ function setList() {
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
-            if (line === 0 || line === 11) {
+            if (line === 0 || line === 9) {
               words.push(baseUppercase()[word]);
             } else if (word === page ) {
               words.push(baseDots()[word]);
@@ -259,7 +259,7 @@ function setList() {
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
-            if (line === 0 || line === 11) {
+            if (line === 0 || line === 9) {
               words.push(baseUppercase()[word]);
             } else if (word === page ) {
               words.push(baseUppercase()[word]);
@@ -283,7 +283,7 @@ function setList() {
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
-            if (line === 0 || line === 11) {
+            if (line === 0 || line === 9) {
               words.push(baseDashes()[word]);
             } else if (line === randomNumber) {
               words.push(baseUppercase()[word]);
@@ -359,7 +359,7 @@ function setList() {
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
-            if (line === 0 || line === 11) {
+            if (line === 0 || line === 9) {
               words.push(baseDots()[word]);
             } else if (line === randomNumber) {
               words.push(baseUppercase()[word]);
@@ -994,7 +994,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (hitRandom(3)) {
@@ -1020,7 +1020,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (hitRandom(3)) {
@@ -1046,7 +1046,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word < line) {
@@ -1149,7 +1149,7 @@ function setList() {
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[page]);
@@ -1170,9 +1170,9 @@ function setList() {
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             } else {
@@ -1195,9 +1195,9 @@ function setList() {
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= line; word += 1) {
+          for (let word = 0; word < line; word += 1) {
             words.push(baseLowercase()[page]);
           }
           lines.push(words.join(''));
@@ -1520,7 +1520,7 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 1; page += 1) {
         const lines = [];
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 6; word += 1) {
             words.push(baseUppercaseTrailingSpaces()[line]);
@@ -1538,7 +1538,7 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 1; page += 1) {
         const lines = [];
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 6; word += 1) {
             words.push(baseLowercaseTrailingSpaces()[line]);
