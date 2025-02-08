@@ -6,7 +6,135 @@ let debug = true;
 function setList() {
   return [
 
-    // Bottom Line With dots 
+    // Horizontal Line With Underscores Plus first line
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumber = randomNumberBetween(0, 9);
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 0 || line === 11) {
+              words.push(baseUnderscore()[word]);
+            } else if (line === randomNumber) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Horizontal Line With Vertical Line
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumber = randomNumberBetween(0, 9);
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === randomNumber) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Horizontal Line With Vertical Line Surrounded By Dashes 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumber = randomNumberBetween(0, 9);
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === randomNumber) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseDashes()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
+
+    // Horizontal Line With dots Plus first line
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line === 0 || line === 11) {
+              words.push(baseDots()[word]);
+            } else if (line === page) {
+              words.push(baseUppercase()[word]);
+            } else if (word === page ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Horizontal Line With dots 
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page) {
+                words.push(baseDots()[word]);
+              } else {
+                if (word === page ) {
+                  words.push(baseUppercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // }
+      return pages;
+    },
+
+    // Line With dots 
     () => {
       const pages = [];
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
