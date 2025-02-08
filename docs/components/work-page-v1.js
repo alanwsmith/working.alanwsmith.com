@@ -2044,12 +2044,19 @@ class WorkPage extends HTMLElement {
 
   static pageOrder = [];
 
+  static outputDebugView() {
+    this.loadSets();
+
+    const el = document.querySelector('.debug-view');
+    el.innerHTML = 'xxxxxxxxxxxxxxxxxxx';
+  }
+
   static deregister(el) {
     // TODO: Remove the element
   }
 
   static updatePageOrder() {
-    console.log('updatePageOrder');
+    // console.log('updatePageOrder');
     for (let id in this.instances) {
       this.pageOrder.push(id);
     }
@@ -2058,7 +2065,7 @@ class WorkPage extends HTMLElement {
   }
 
   static async updatePage() {
-    console.log('updatePage');
+    // console.log('updatePage');
     const pageId = this.pageOrder.pop();
     // const format = this.formats.pop()
     const el = this.instances[pageId];
@@ -2096,11 +2103,11 @@ class WorkPage extends HTMLElement {
   }
 
   static loadSets() {
-    console.log('loadSets');
+    // console.log('loadSets');
     this.sets = this.baseSets();
-    this.padSetsLeft();
-    this.padSetsRight();
-    this.padSetsTop();
+    // this.padSetsLeft();
+    // this.padSetsRight();
+    // this.padSetsTop();
     console.log(`Total sets: ${this.sets.length}`);
   }
 
@@ -2187,7 +2194,7 @@ class WorkPage extends HTMLElement {
   }
 
   static shuffleFormats() {
-    console.log('shuffleFormats');
+    // console.log('shuffleFormats');
     this.formats = [];
     for (let setIndex = 0; setIndex < this.sets.length; setIndex += 1) {
       this.formats.push(...this.sets[setIndex]);
@@ -2197,6 +2204,7 @@ class WorkPage extends HTMLElement {
 
   static kickoff() {
     console.log('kickoff');
+    this.outputDebugView();
     this.startRun();
   }
 
