@@ -6,6 +6,89 @@ let debug = true;
 function setList() {
   return [
 
+    // Four Random Lowercase Words With Dots
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumbers = [
+          0,
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          9,
+        ]
+
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (randomNumbers.includes(word) ) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(baseDots()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Four Random Words With Dashes
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumbers = [
+          0,
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+        ]
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (randomNumbers.includes(word) ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseDashes()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Four Random Words
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        const randomNumbers = [
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+          randomNumberBetween(0, 9),
+        ]
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (randomNumbers.includes(word) ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
     // Start and End lines with bridge dashes
     () => {
       const pages = [];
