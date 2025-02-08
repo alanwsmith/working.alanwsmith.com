@@ -970,7 +970,129 @@ function setList() {
       return pages;
     },
 
-    // block with lowercase single words
+    // Triangle Small Lower Reverse With Dashes 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word < line) {
+              words.push(basePipes()[page]);
+            } else {
+              words.push(baseUppercase()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        lines.push('');
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
+    // Triangle Small Upper Reverse With Dashes 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = ['']
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word < line) {
+              words.push(baseDashes()[page]);
+            } else {
+              words.push(baseUppercase()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Triangle Small Upper With Dots
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        lines.push('');
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            } else {
+              words.push(baseDots()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Triangle Small Lower With Dots
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            } else {
+              words.push(baseDots()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        lines.push('');
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
+    // Full Word Blocks
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            words.push(baseLowercase()[page]);
+          }
+          lines.push(words.join(''));
+        }
+        lines.push('');
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
+    // Triangle lowercase Small at bottom
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= line; word += 1) {
+            words.push(baseLowercase()[page]);
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
+    // Triangle lowercase Small at top
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
