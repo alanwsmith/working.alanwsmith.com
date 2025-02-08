@@ -1,10 +1,10 @@
 const maxCharactersPerLine = 52;
-const maxLinesPerPage = 12;
+const maxLinesPerPage = 10;
 let debug = true;
 debug = false;
 
 let debugSet = 36;
-// debugSet = null;
+debugSet = null;
 
 function setList() {
   return [
@@ -22,7 +22,7 @@ function setList() {
         //   9,
         // ]
         const targetLines = [0, 11];
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (targetLines.includes(line) ) {
@@ -55,7 +55,7 @@ function setList() {
         //   9,
         // ]
         const targetLines = [0, 11];
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (targetLines.includes(line) ) {
@@ -88,7 +88,7 @@ function setList() {
         //   9,
         // ]
         const targetLines = [0, 11];
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (targetLines.includes(line) ) {
@@ -121,7 +121,7 @@ function setList() {
         //   9,
         // ]
         const targetLines = [0, 11];
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (targetLines.includes(line) ) {
@@ -153,7 +153,7 @@ function setList() {
           randomNumberBetween(0, 9),
           9,
         ]
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (randomNumbers.includes(word) ) {
@@ -180,7 +180,7 @@ function setList() {
           randomNumberBetween(0, 9),
           randomNumberBetween(0, 9),
         ]
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (randomNumbers.includes(word) ) {
@@ -207,7 +207,7 @@ function setList() {
           randomNumberBetween(0, 9),
           randomNumberBetween(0, 9),
         ]
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (randomNumbers.includes(word) ) {
@@ -229,7 +229,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === 0 || line === 11) {
@@ -253,7 +253,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === 0 || line === 11) {
@@ -277,7 +277,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === 0 || line === 11) {
@@ -303,7 +303,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === randomNumber) {
@@ -327,7 +327,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === randomNumber) {
@@ -353,7 +353,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === 0 || line === 11) {
@@ -379,7 +379,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === randomNumber) {
@@ -405,7 +405,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === randomNumber) {
@@ -431,7 +431,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const randomNumber = randomNumberBetween(0, 9);
-        for (let line = 0; line < 12; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (line === randomNumber) {
@@ -457,7 +457,7 @@ function setList() {
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line === page) {
@@ -484,7 +484,7 @@ function setList() {
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line === page) {
@@ -511,7 +511,7 @@ function setList() {
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line === page ) {
@@ -538,7 +538,7 @@ function setList() {
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page) {
@@ -565,7 +565,7 @@ function setList() {
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page && line !== page + 1 && line !== page -1) {
@@ -592,7 +592,7 @@ function setList() {
       // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page && line !== page + 1 && line !== page -1) {
@@ -615,7 +615,7 @@ function setList() {
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page && line !== page + 1 && line !== page -1 && line !== page + 4) {
@@ -638,7 +638,7 @@ function setList() {
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page && line !== page + 1 && line !== page -1 && line !== page + 4) {
@@ -659,9 +659,9 @@ function setList() {
     () => {
       const pages = [];
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 12; page += 1) {
+        for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line !== page) {
@@ -685,7 +685,7 @@ function setList() {
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line === 0 || line == 11) {
@@ -716,7 +716,7 @@ function setList() {
       //for (let targetLine = 0; targetLine < 10; targetLine += 1) {
         for (let page = 0; page < 10; page += 1) {
           const lines = [];
-          for (let line = 0; line < 12; line += 1) {
+          for (let line = 0; line < 10; line += 1) {
             const words = [];
             for (let word = 0; word < 10; word += 1) {
               if (line === 0 || line == 11) {
@@ -970,6 +970,48 @@ function setList() {
       return pages;
     },
 
+    // 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(baseDots()[page]);
+            } else {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
+    // Random Lower Block With Pipes 
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = []
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (hitRandom(3)) {
+              words.push(basePipes()[page]);
+            } else {
+              words.push(baseUppercase()[page]);
+            }
+          }
+          lines.push(words.join(''));
+        }
+        pages.push(lines.reverse().join("\n"));
+      }
+      return pages;
+    },
+
     // Triangle Small Lower Reverse With Dashes 
     () => {
       const pages = [];
@@ -986,7 +1028,6 @@ function setList() {
           }
           lines.push(words.join(''));
         }
-        lines.push('');
         pages.push(lines.reverse().join("\n"));
       }
       return pages;
@@ -996,7 +1037,7 @@ function setList() {
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
-        const lines = ['']
+        const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
@@ -1018,7 +1059,6 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = []
-        lines.push('');
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
@@ -1051,7 +1091,6 @@ function setList() {
           }
           lines.push(words.join(''));
         }
-        lines.push('');
         pages.push(lines.reverse().join("\n"));
       }
       return pages;
@@ -1069,7 +1108,6 @@ function setList() {
           }
           lines.push(words.join(''));
         }
-        lines.push('');
         pages.push(lines.reverse().join("\n"));
       }
       return pages;
@@ -1841,12 +1879,17 @@ function setList() {
     // BASE: lower case strings
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
+        for (let line = 0; line <= 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
-            words.push(baseLowercase()[word]);
+            if (line == page) {
+              words.push(baseLowercase()[word]);
+            } else {
+              words.push(randomMarkFunction()[word]);
+            }
           }
           lines.push(words.join(' '));
         }
@@ -1857,7 +1900,6 @@ function setList() {
 
   ]
 }
-
 
 function hitRandom(num) {
   const checkNum = Math.floor(Math.random() *  num) +  1;
@@ -1894,6 +1936,22 @@ function randomUnderscoresBetween (min, max) {
   const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
   const theSpaces = Array(spaceCount).fill('_').join('');
   return theSpaces;
+}
+
+function getRandomMarkFunction() {
+  let markFunctions = [
+    baseAsterisks,
+    baseBackSlashes,
+    baseCarets,
+    baseDashes, 
+    baseDots,
+    baseHashtags,
+    basePipes,
+    baseSlashes,
+    baseUnderscore,
+  ]
+  shuffle(markFunctions);
+  return markFunctions[0];
 }
 
 // All lowercase
@@ -1980,13 +2038,6 @@ function baseCapital() {
   });
 }
 
-// letters replaced with underscores
-function baseUnderscore() {
-  return baseLowercase().map((v) => {
-    return v.replaceAll(/./g, '_');
-  });
-}
-
 // first letter lowercase followed by uppercase
 function baseLowerThenUppercase() {
   return baseLowercase().map((v) => { 
@@ -1998,6 +2049,13 @@ function baseLowerThenUppercase() {
 function baseLowercaseReversed() {
   return baseLowercase().map((v) => {
     return v.split('').reverse().join('');
+  });
+}
+
+// letters replaced with underscores
+function baseUnderscore() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '_');
   });
 }
 
@@ -2086,7 +2144,7 @@ const componentSheet = new CSSStyleSheet();
 componentSheet.replaceSync(`
 :host {
   display: inline-block;
-  padding: 0.3rem;
+  padding: 0.4rem;
 }
 
 .card {
@@ -2130,7 +2188,6 @@ componentSheet.replaceSync(`
 .wrapper {
   position: relative;
   height: 100%;
-
 /*
   border-radius: 2px;
   box-sizing: border-box;
@@ -2141,7 +2198,7 @@ componentSheet.replaceSync(`
 }
 
 .content {
-  margin: 0.5rem;
+  margin-top: 1.3rem;
   overflow-x: clip;
 }
 
@@ -2181,7 +2238,6 @@ class WorkPage extends HTMLElement {
       setEl.innerHTML = `<h2>Set Index: ${debugSetIndex}</h2><div><pre>${pageArray.join('</pre></div><hr /><div><pre>')}</pre></div>`;
       outEl.appendChild(setEl);
     });
-
     const el = document.querySelector('.debug-view');
     el.appendChild(outEl);
   }
