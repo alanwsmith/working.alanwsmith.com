@@ -6,7 +6,157 @@ let debug = true;
 function setList() {
   return [
 
-    //
+    // Lowercase block with mixed carets 
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line !== targetLine && line !== targetLine + 1 && line !== targetLine -1 && line !== targetLine + 4) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseCarets()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Uppercase block with mixed lines of dashes
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line !== targetLine && line !== targetLine + 1 && line !== targetLine -1 && line !== targetLine + 4) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseDashes()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Uppercase block with three line space
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line !== targetLine && line !== targetLine + 1 && line !== targetLine -1) {
+                words.push(baseUppercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Uppercase block with three line bridge of random dots 
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line !== targetLine && line !== targetLine + 1 && line !== targetLine -1) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (hitRandom(4)) {
+                  words.push(baseDots()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Uppercase block with single line bridge of random words
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line !== targetLine) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (hitRandom(4)) {
+                  words.push(baseUppercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Underscore line surround by random upper case
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === targetLine) {
+                words.push(baseUnderscore()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseUppercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Single lower case line with dots surrounding
     () => {
       const pages = [];
       for (let targetLine = 0; targetLine < 10; targetLine += 1) {
@@ -1365,6 +1515,13 @@ function baseAsterisks() {
 function baseDashes() {
   return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '-');
+  });
+}
+
+// letters replaced with dash 
+function baseCarets() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '^');
   });
 }
 
