@@ -3,8 +3,11 @@ const maxLinesPerPage = 10;
 let debug = true;
 debug = false;
 
-let debugSet = 36;
+let debugSet = 69;
 debugSet = null;
+
+let showFormats = true;
+showFormats = false;
 
 function setList() {
   return [
@@ -1166,7 +1169,7 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
+        const lines = [];
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
           for (let word = 0; word <= 10; word += 1) {
@@ -1191,7 +1194,7 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
+        const lines = [];
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
           for (let word = 0; word <= line; word += 1) {
@@ -1233,12 +1236,14 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        const words = [];
-          //for (let word = 0; word < 10; word += 1) {
-        words.push(baseUppercase()[page]);
-          //}
-        lines.push(centerLine(words.join(' ')));
-        pages.push(lines.join("\n"));
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          words.push(baseUppercase()[page]);
+          lines.push(centerLineWithDots(words.join(' ')));
+        }
+        if (page !== 7) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
@@ -1754,8 +1759,6 @@ function setList() {
         const rightPaddingNumber = randomNumberBetween(3, 14);
         const leftPadding = randomUnderscoresBetween(leftPaddingNumber, leftPaddingNumber);
         const rightPadding = randomUnderscoresBetween(rightPaddingNumber, rightPaddingNumber);
-        const spacePaddingNumber = 16 - leftPaddingNumber;
-        const spacePadding = randomSpacesBetween(spacePaddingNumber, spacePaddingNumber);
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1764,7 +1767,7 @@ function setList() {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(spacePadding + leftPadding + ' ' + words.join(' ') + rightPadding);
+          lines.push(centerLine(leftPadding + ' ' + words.join(' ') + ' ' + rightPadding));
         }
         pages.push(lines.join("\n"));
       }
@@ -2504,10 +2507,10 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             }
@@ -2528,10 +2531,10 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             }
@@ -2552,10 +2555,10 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word >= line) {
               words.push(baseLowercase()[page]);
             }
@@ -2575,10 +2578,10 @@ function setList() {
       const pages = [];
       const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word >= line) {
               words.push(baseLowercase()[page]);
             }
@@ -2599,11 +2602,11 @@ function setList() {
       const pages = [];
       const skipPages = [7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (line > 5) {
+          for (let word = 0; word < 10; word += 1) {
+            if (line >= 5) {
               if (word >= line) {
                 words.push(baseLowercase()[page]);
               }
@@ -2629,11 +2632,11 @@ function setList() {
       const pages = [];
       const skipPages = [7];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (line > 5) {
+          for (let word = 0; word < 10; word += 1) {
+            if (line >= 5) {
               if (word >= line) {
                 words.push(baseLowercase()[page]);
               }
@@ -2658,8 +2661,9 @@ function setList() {
 function centerLine(line) {
   const characterCount = Math.floor(line.split('').length / 2);
   const leftPad = 22 - characterCount;
+  const rightPad = leftPad - (line.split('').length % 2); 
   if (leftPad > 0) {
-    return Array(leftPad).fill(' ').join('') + line;
+    return Array(leftPad).fill(' ').join('') + line + Array(rightPad).fill(' ').join('');
   } else {
     return line;
   }
@@ -3029,7 +3033,6 @@ class WorkPage extends HTMLElement {
   static outputDebugView() {
     this.loadSets();
     const outEl = document.createElement('div');
-    outEl.innerHTML = 'here';
     this.sets.forEach((debugSet, debugSetIndex) => {
       const setEl = document.createElement('div');
       const pageArray = [];
@@ -3196,7 +3199,9 @@ class WorkPage extends HTMLElement {
 
   static kickoff() {
     console.log('kickoff');
-    this.outputDebugView();
+    if (showFormats === true) {
+      this.outputDebugView();
+    }
     this.startRun();
   }
 
@@ -3296,7 +3301,7 @@ class WorkPage extends HTMLElement {
       }
     }
     if (this.completedFirstWrite) {
-      await sleep(randomNumberBetween(300, 700));
+      await sleep(randomNumberBetween(900, 1800));
     }
     this.completedFirstWrite = true;
   }
