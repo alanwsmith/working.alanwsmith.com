@@ -2046,9 +2046,20 @@ class WorkPage extends HTMLElement {
 
   static outputDebugView() {
     this.loadSets();
+    const outEl = document.createElement('div');
+    outEl.innerHTML = 'here';
+    this.sets.forEach((debugSet, debugSetIndex) => {
+      const setEl = document.createElement('div');
+      const pageArray = [];
+      debugSet.forEach((pages) => {
+        pageArray.push(pages);
+      });
+      setEl.innerHTML = `<h2>Set Index: ${debugSetIndex}</h2><div><pre>${pageArray.join('</pre></div><div><pre>')}</pre></div>`;
+      outEl.appendChild(setEl);
+    });
 
     const el = document.querySelector('.debug-view');
-    el.innerHTML = 'xxxxxxxxxxxxxxxxxxx';
+    el.appendChild(outEl);
   }
 
   static deregister(el) {
