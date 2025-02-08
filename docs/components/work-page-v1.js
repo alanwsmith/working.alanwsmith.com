@@ -818,7 +818,8 @@ function setList() {
       return pages;
     },
 
-    // Basic Crosses
+    /////////////////////////////////////////////
+    // Index: 30
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -843,7 +844,8 @@ function setList() {
       return pages;
     },
 
-    // Single Letter Bridge
+    /////////////////////////////////////////////
+    // Index: 31
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -872,7 +874,8 @@ function setList() {
       return pages;
     },
 
-    // Diagonals With Single Word
+    /////////////////////////////////////////////
+    // Index: 32
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -903,7 +906,8 @@ function setList() {
       return pages;
     },
 
-    // Diagonal With Word Column Hiding Word With Underscores 
+    /////////////////////////////////////////////
+    // Index: 33
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -932,7 +936,8 @@ function setList() {
       return pages;
     },
 
-    // lower case strings with asterisks 
+    /////////////////////////////////////////////
+    // Index: 34
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -951,7 +956,8 @@ function setList() {
       return pages;
     },
 
-    // lower case strings no spaces
+    /////////////////////////////////////////////
+    // Index: 35
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -970,7 +976,8 @@ function setList() {
       return pages;
     },
 
-    // 
+    /////////////////////////////////////////////
+    // Index: 36
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -991,7 +998,8 @@ function setList() {
       return pages;
     },
 
-    // Random Lower Block With Pipes 
+    /////////////////////////////////////////////
+    // Index: 37
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -1012,7 +1020,8 @@ function setList() {
       return pages;
     },
 
-    // Triangle Small Lower Reverse With Dashes 
+    /////////////////////////////////////////////
+    // Index: 38
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -1033,72 +1042,89 @@ function setList() {
       return pages;
     },
 
-    // Triangle Small Upper Reverse With Dashes 
+    /////////////////////////////////////////////
+    // Index: 39
     () => {
       const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word < line) {
-              words.push(baseDashes()[page]);
+              words.push(randomMarkFunction()[page]);
             } else {
               words.push(baseUppercase()[page]);
             }
           }
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
         }
-        pages.push(lines.join("\n"));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Triangle Small Upper With Dots
+    /////////////////////////////////////////////
+    // Index: 40
     () => {
       const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             } else {
-              words.push(baseDots()[page]);
+              words.push(randomMarkFunction()[page]);
             }
           }
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
         }
-        pages.push(lines.join("\n"));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Triangle Small Lower With Dots
+    /////////////////////////////////////////////
+    // Index: 41
     () => {
       const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = []
-        for (let line = 0; line <= 10; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
-              words.push(baseLowercase()[page]);
+              words.push(baseUppercase()[page]);
             } else {
-              words.push(baseDots()[page]);
+              words.push(randomMarkFunction()[page]);
             }
           }
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
         }
-        pages.push(lines.reverse().join("\n"));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Full Word Blocks
+    /////////////////////////////////////////////
+    // Index: 42
     () => {
       const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
@@ -1106,16 +1132,45 @@ function setList() {
           for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[page]);
           }
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
         }
-        pages.push(lines.reverse().join("\n"));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Triangle lowercase Small at bottom
+    /////////////////////////////////////////////
+    // Index: 43
     () => {
       const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            } else {
+              words.push(baseSpaces()[page]);
+            }
+          }
+          lines.push(centerLine(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 44
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = [''];
         for (let line = 0; line <= 10; line += 1) {
@@ -1125,51 +1180,36 @@ function setList() {
           }
           lines.push(words.join(''));
         }
-        pages.push(lines.reverse().join("\n"));
-      }
-      return pages;
-    },
-
-    // Triangle lowercase Small at top
-    () => {
-      const pages = [];
-      for (let page = 0; page < 10; page += 1) {
-        const lines = [''];
-        for (let line = 0; line <= 10; line += 1) {
-          const words = [];
-          for (let word = 0; word <= line; word += 1) {
-            words.push(baseLowercase()[page]);
-          }
-          lines.push(words.join(''));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
         }
-        pages.push(lines.join("\n"));
       }
       return pages;
     },
 
-    // Blocks with upper case single words skipping makes
+    /////////////////////////////////////////////
+    // Index: 45
     () => {
       const pages = [];
+      const skipPages = [5, 7];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
-            // skip makes since it overflows
-            if (page !== 5) {
-              words.push(baseUppercase()[page]);
-            } else {
-              words.push(baseUppercase()[page - 1]);
-            }
+            words.push(baseUppercase()[page]);
           }
           lines.push(words.join(' '));
         }
-        pages.push(lines.join("\n"));
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Single Words
+    /////////////////////////////////////////////
+    // Index: 46
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -1178,13 +1218,14 @@ function setList() {
           //for (let word = 0; word < 10; word += 1) {
         words.push(baseUppercase()[page]);
           //}
-        lines.push(words.join(' '));
+        lines.push(centerLine(words.join(' ')));
         pages.push(lines.join("\n"));
       }
       return pages;
     },
 
-    // Single Column With Single Word
+    /////////////////////////////////////////////
+    // Index: 47
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
@@ -1196,16 +1237,19 @@ function setList() {
           //}
           lines.push(words.join(' '));
         }
-        pages.push(lines.join("\n"));
+        if (page !== 7) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // All Work Makes Dull Boy With Underscores
+    /////////////////////////////////////////////
+    // Index: 48
     () => {
       const pages = [];
       const indexes = [0, 1, 8, 9];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1213,7 +1257,7 @@ function setList() {
             if (indexes.includes(word)) {
               words.push(baseUppercase()[word]);
             } else {
-              words.push(baseAsterisks()[word]);
+              words.push(markFunctions[page]()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1223,11 +1267,12 @@ function setList() {
       return pages;
     },
 
-    // All Work Makes Dull Boy With Underscores
+    /////////////////////////////////////////////
+    // Index: 49
     () => {
       const pages = [];
       const indexes = [0, 1, 5, 8, 9];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1235,7 +1280,7 @@ function setList() {
             if (indexes.includes(word)) {
               words.push(baseUppercase()[word]);
             } else {
-              words.push(baseUnderscore()[word]);
+              words.push(markFunctions[page]()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1249,13 +1294,13 @@ function setList() {
     // Index: 50
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word === line) {
-              words.push(baseUnderscore()[word]);
+              words.push(markFunctions[page]()[word]);
             } else {
               words.push(baseUppercase()[word]);
             }
@@ -1271,7 +1316,7 @@ function setList() {
     // Index: 51
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1279,7 +1324,7 @@ function setList() {
             if (word === line) {
               words.push(baseUppercase()[word]);
             } else {
-              words.push(baseUnderscore()[word]);
+              words.push(markFunctions[page]()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1293,7 +1338,7 @@ function setList() {
     // Index: 52
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1301,7 +1346,7 @@ function setList() {
             if (word === line) {
               words.push(baseUppercase()[word]);
             } else {
-              words.push(baseUnderscore()[word]);
+              words.push(markFunctions[page]()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1315,7 +1360,7 @@ function setList() {
     // Index: 53
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1323,7 +1368,7 @@ function setList() {
             if (word === line) {
               words.push(baseLowercase()[word]);
             } else {
-              words.push(baseUnderscore()[word]);
+              words.push(markFunctions[page]()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1338,6 +1383,7 @@ function setList() {
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -1345,7 +1391,7 @@ function setList() {
             if (hitRandom(9)) {
               words.push(baseLowercase()[word]);
             } else {
-              words.push(baseHashtags()[word]);
+              words.push(randomMarkFunction()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -1382,12 +1428,13 @@ function setList() {
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (hitRandom(4)) {
-              words.push(baseUnderscore()[word]);
+              words.push(randomMarkFunction()[word]);
             } else {
               words.push(baseUppercase()[word]);
             }
@@ -2432,6 +2479,28 @@ function setList() {
       return pages;
     },
 
+    /////////////////////////////////////////////
+    // Index: 100
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [''];
+        for (let line = 0; line <= 10; line += 1) {
+          const words = [];
+          for (let word = 0; word <= 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLine(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
 
   ]
 }
@@ -2502,6 +2571,7 @@ const markFunctionsWithoutSpaces = [
     baseHashtags,
     basePipes,
     baseSlashes,
+    baseUnderscore,
 ];
 
 const markFunctions = [
