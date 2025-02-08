@@ -1259,7 +1259,7 @@ function setList() {
           //for (let word = 0; word < 10; word += 1) {
             words.push(baseUppercase()[page]);
           //}
-          lines.push(words.join(' '));
+          lines.push(centerLineWithDashes(words.join(' ')));
         }
         if (page !== 7) {
           pages.push(lines.join("\n"));
@@ -1743,7 +1743,7 @@ function setList() {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(leftPadding + ' ' + words.join(' '));
+          lines.push(centerLine(leftPadding + ' ' + words.join(' ')));
         }
         pages.push(lines.join("\n"));
       }
@@ -1812,7 +1812,7 @@ function setList() {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(words.join(' ') + ' ' + rightPadding);
+          lines.push(centerLine(words.join(' ') + ' ' + rightPadding));
         }
         pages.push(lines.join("\n"));
       }
@@ -2444,6 +2444,10 @@ function setList() {
           for (let word = 0; word < 10; word += 1) {
             if (word === page) {
               words.push(baseUppercase()[word]);
+            } else if (word === 0) {
+              words.push(baseOpenBracket()[word]);
+            } else if (word === 9) {
+              words.push(baseCloseBracket()[word]);
             } else {
               words.push(baseSpaces()[word]);
             }
@@ -2461,7 +2465,7 @@ function setList() {
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
-        const randomMarkFunction = getRandomMarkFunction();
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
@@ -2494,7 +2498,7 @@ function setList() {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(words.join(' ') + ' ' + rightPadding);
+          lines.push(centerLine(words.join(' ') + ' ' + rightPadding));
         }
         pages.push(lines.join("\n"));
       }
@@ -2547,7 +2551,6 @@ function setList() {
       }
       return pages;
     },
-
 
     /////////////////////////////////////////////
     // Index: 102
@@ -2678,7 +2681,83 @@ function setList() {
             }
           }
           words.push(']');
-          lines.push(words.join(''));
+          lines.push(centerLine(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 107
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word <= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLineWithBrackets(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 108
+    () => {
+      const pages = [];
+      const skipPages = [5, 7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word >= line) {
+              words.push(baseLowercase()[page]);
+            }
+          }
+          lines.push(centerLineWithBrackets(words.join('')));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 109
+    () => {
+      const pages = [];
+      const skipPages = [7];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (line >= 5) {
+              if (word >= line) {
+                words.push(baseLowercase()[page]);
+              }
+            } else {
+              if (word <= line) {
+                words.push(baseLowercase()[page]);
+              }
+            }
+          }
+          lines.push(centerLineWithBrackets(words.join('')));
         }
         if (skipPages.includes(page) === false) {
           pages.push(lines.join("\n"));
@@ -2700,6 +2779,29 @@ function centerLine(line) {
     return line;
   }
 }
+
+function centerLineWithDashes(line) {
+  const characterCount = Math.floor(line.split('').length / 2);
+  const leftPad = 22 - characterCount;
+  const rightPad = leftPad - (line.split('').length % 2); 
+  if (leftPad > 0) {
+    return Array(leftPad).fill('-').join('') + line + Array(rightPad).fill('-').join('');
+  } else {
+    return line;
+  }
+}
+
+function centerLineWithBrackets(line) {
+  const characterCount = Math.floor(line.split('').length / 2);
+  const leftPad = 22 - characterCount;
+  const rightPad = leftPad - (line.split('').length % 2); 
+  if (leftPad > 0) {
+    return Array(leftPad).fill('[').join('') + line + Array(rightPad).fill(']').join('');
+  } else {
+    return line;
+  }
+}
+
 
 function centerLineWithDots(line) {
   const characterCount = Math.floor(line.split('').length / 2);
