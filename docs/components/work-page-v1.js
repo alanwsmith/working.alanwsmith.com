@@ -1483,21 +1483,20 @@ function setList() {
     // Index: 61
     () => {
       const pages = [];
-      for (let page = 0; page < 10; page += 1) {
+      for (let page = 0; page < markFunctions.length; page += 1) {
         const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-              words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(markFunctions[page]()[1]);
+              words.push(markFunctions[page]()[1]);
+              words.push(markFunctions[page]()[1]);
               words.push(baseUppercaseLeadingSpaces()[word]);
             }
           }
-          lines.push(words.join(' '));
+          lines.push(centerLine(words.join(' ')));
         }
         pages.push(lines.join("\n"));
       }
@@ -1522,7 +1521,7 @@ function setList() {
               words.push(baseUppercaseLeadingSpaces()[word]);
             }
           }
-          lines.push(words.join(' '));
+          lines.push(centerLine(words.join(' ')));
         }
         if (page === 9) {
           pages.push(lines.join("\n"));
@@ -1545,7 +1544,7 @@ function setList() {
               words.push(baseUppercaseLeadingSpaces()[word]);
             }
           }
-          lines.push(words.join(' '));
+          lines.push(centerLine(words.join(' ')));
         }
         if (page === 9) {
           pages.push(lines.join("\n"));
@@ -1620,14 +1619,14 @@ function setList() {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word === line) {
-              words.push(baseUppercase()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
             }
           }
-          lines.push(words.join(' '));
+          lines.push(centerLine(words.join(' ')));
         }
         if (page === 9) {
           pages.push(lines.join("\n"));
@@ -1670,7 +1669,7 @@ function setList() {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
             if (word === line) {
-              words.push(baseUppercase()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
           lines.push(leftPadding + ' ' + words.join(' '));
