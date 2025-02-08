@@ -1,10 +1,142 @@
 const maxCharactersPerLine = 52;
-const maxLinesPerPage = 14;
+const maxLinesPerPage = 12;
 let debug = true;
-// debug = false;
+debug = false;
 
 function setList() {
   return [
+
+    // Dashes Horizontal Borders With Lowercase And Dotes Bridge
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        // const randomNumbers = [
+        //   0,
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   9,
+        // ]
+        const targetLines = [0, 11];
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (targetLines.includes(line) ) {
+              words.push(baseDashes()[word]);
+            } else {
+              if (word === page) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseDots()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Underscore Horizontal Borders With Lowercase Bridge
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        // const randomNumbers = [
+        //   0,
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   9,
+        // ]
+        const targetLines = [0, 11];
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (targetLines.includes(line) ) {
+              words.push(baseUnderscore()[word]);
+            } else {
+              if (word === page) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Underscore Horizontal Borders With Random Lowercase
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        // const randomNumbers = [
+        //   0,
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   9,
+        // ]
+        const targetLines = [0, 11];
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (targetLines.includes(line) ) {
+              words.push(baseUnderscore()[word]);
+            } else {
+              if (hitRandom(4)) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+    // Uppercase Horizontal Borders With Random Lowercase
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        // const randomNumbers = [
+        //   0,
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   randomNumberBetween(0, 9),
+        //   9,
+        // ]
+        const targetLines = [0, 11];
+        for (let line = 0; line < 12; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (targetLines.includes(line) ) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (hitRandom(4)) {
+                words.push(baseLowercase()[word]);
+              } else {
+                words.push(baseSpaces()[word]);
+              }
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
 
     // Four Random Lowercase Words With Dots
     () => {
@@ -18,7 +150,6 @@ function setList() {
           randomNumberBetween(0, 9),
           9,
         ]
-
         for (let line = 0; line < 12; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
