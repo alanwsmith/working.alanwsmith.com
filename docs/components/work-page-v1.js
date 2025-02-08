@@ -6,6 +6,60 @@ let debug = true;
 function setList() {
   return [
 
+    //
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === targetLine) {
+                words.push(baseLowercase()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseDots()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
+    // Dotted line with random words surrounding
+    () => {
+      const pages = [];
+      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === targetLine) {
+                words.push(baseDots()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseLowercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      } 
+      return pages;
+    },
+
 
     // Border HashTags With Random Words Inside
     () => {
