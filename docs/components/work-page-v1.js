@@ -3,7 +3,7 @@ const maxLinesPerPage = 10;
 let debug = true;
 debug = false;
 
-let debugSet = 69;
+let debugSet = 106;
 debugSet = null;
 
 let showFormats = true;
@@ -2655,6 +2655,38 @@ function setList() {
       return pages;
     },
 
+    /////////////////////////////////////////////
+    // Index: 106
+    () => {
+      const pages = [];
+      const skipPages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const randomNumber = randomNumberBetween(0, 9); 
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          words.push('[');
+          for (let word = 0; word < 10; word += 1) {
+            if (word === randomNumber) {
+              words.push(baseUppercase()[word]);
+            } else {
+              if (word > randomNumber) {
+                words.push(baseCloseBracket()[word]);
+              } else {
+                words.push(baseOpenBracket()[word]);
+              }
+            }
+          }
+          words.push(']');
+          lines.push(words.join(''));
+        }
+        if (skipPages.includes(page) === false) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
   ]
 }
 
@@ -2679,8 +2711,6 @@ function centerLineWithDots(line) {
     return line;
   }
 }
-
-
 
 function hitRandom(num) {
   const checkNum = Math.floor(Math.random() *  num) +  1;
@@ -2739,13 +2769,14 @@ const markFunctionsWithoutSpaces = [
     basePipes,
     baseSlashes,
     baseUnderscore,
+    baseOpenBracket,
+    baseCloseBracket,
 ];
 
 const markFunctions = [
   ...markFunctionsWithoutSpaces,  
   baseSpaces,
 ];
-
 
 function getRandomMarkFunction() {
   let funcs = markFunctions;
@@ -2924,6 +2955,20 @@ function baseDashes() {
 function baseCarets() {
   return baseLowercase().map((v) => {
     return v.replaceAll(/./g, '^');
+  });
+}
+
+// letters replaced with open bracket
+function baseOpenBracket() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, '[');
+  });
+}
+
+// letters replaced with close bracket
+function baseCloseBracket() {
+  return baseLowercase().map((v) => {
+    return v.replaceAll(/./g, ']');
   });
 }
 
