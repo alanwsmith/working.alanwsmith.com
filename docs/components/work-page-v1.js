@@ -1688,58 +1688,64 @@ function setList() {
       return pages;
     },
 
-    // Single column uppercase with random right padding with dots
+    /////////////////////////////////////////////
+    // Index: 71
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
-        const rightPadding = randomDotsBetween(0, 20);
+        const rightPadding = randomDotsBetween(5, 30);
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(words.join(' ') + rightPadding);
+          lines.push(words.join(' ') + ' ' + rightPadding);
         }
         pages.push(lines.join("\n"));
       }
       return pages;
     },
 
-    // Single column uppercase with random right padding
+    /////////////////////////////////////////////
+    // Index: 72
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
-        const rightPadding = randomSpacesBetween(0, 20);
+      for (let page = 0; page < 10; page += 1) {
+        const leftPadding = randomSpacesBetween(16, 16);
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (word === line) {
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
               words.push(baseUppercase()[word]);
             }
           }
-          lines.push(words.join(' ') + rightPadding);
+          lines.push(leftPadding + words.join(' '));
         }
-        pages.push(lines.join("\n"));
+        if (page !== 7) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
 
-    // Uppercase or spaces 
+    /////////////////////////////////////////////
+    // Index: 73
     () => {
       const pages = [];
-      for (let page = 0; page < maxLinesPerPage; page += 1) {
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunctionWithoutSpaces();
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(6)) {
               words.push(baseSpaces()[word]);
             } else {
-              words.push(baseUppercase()[word]);
+              words.push(randomMarkFunction()[word]);
             }
           }
           lines.push(words.join(' '));
@@ -2273,8 +2279,8 @@ function setList() {
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
-        const lines = [];
         const randomMarkFunction = getRandomMarkFunction();
+        const lines = [];
         for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 0; word < 10; word += 1) {
@@ -2316,6 +2322,76 @@ function setList() {
       return pages;
     },
 
+
+    /////////////////////////////////////////////
+    // Index: 97
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(baseSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 98
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const randomMarkFunction = getRandomMarkFunction();
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === page) {
+              words.push(baseUppercase()[word]);
+            } else {
+              words.push(randomMarkFunction()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
+    /////////////////////////////////////////////
+    // Index: 99
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const rightPadding = randomUnderscoresBetween(5, 30);
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' ') + ' ' + rightPadding);
+        }
+        pages.push(lines.join("\n"));
+      }
+      return pages;
+    },
+
+
   ]
 }
 
@@ -2338,6 +2414,16 @@ function randomSpacesBetween (min, max) {
   return theSpaces;
 }
 
+function randomMarkBetween (min, max) { 
+  const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
+  let marks = [
+    '-', '|', '*', '/', '\\', '#'
+  ];
+  shuffle(marks);
+  const theSpaces = Array(spaceCount).fill(marks[0]).join('');
+  return theSpaces;
+}
+
 function randomDotsBetween (min, max) { 
   const spaceCount = Math.floor(Math.random() * (max - min + 1) + min);
   const theSpaces = Array(spaceCount).fill('.').join('');
@@ -2356,7 +2442,7 @@ function randomUnderscoresBetween (min, max) {
   return theSpaces;
 }
 
-const markFunctions = [
+const markFunctionsWithoutSpaces = [
     baseAsterisks,
     baseBackSlashes,
     baseCarets,
@@ -2365,11 +2451,22 @@ const markFunctions = [
     baseHashtags,
     basePipes,
     baseSlashes,
-    baseSpaces,
 ];
+
+const markFunctions = [
+  ...markFunctionsWithoutSpaces,  
+  baseSpaces,
+];
+
 
 function getRandomMarkFunction() {
   let funcs = markFunctions;
+  shuffle(funcs);
+  return funcs[0];
+}
+
+function getRandomMarkFunctionWithoutSpaces() {
+  let funcs = markFunctionsWithoutSpaces;
   shuffle(funcs);
   return funcs[0];
 }
