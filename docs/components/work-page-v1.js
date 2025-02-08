@@ -3430,7 +3430,6 @@ class WorkPage extends HTMLElement {
     }
     this.allowBolds = hitRandom(4);
     this.allowFrequentBolds = hitRandom(9);
-    this.allowEmphasis = hitRandom(7);
     for (let lineIndex = 0; lineIndex < theLines.length; lineIndex += 1) {
       // handle the different splitters start 
       // with space then fallback. note that this
@@ -3461,8 +3460,6 @@ class WorkPage extends HTMLElement {
         this.content.innerHTML += `<strong>${words[i]}</strong>`;
       } else if (this.allowBolds === true && hitRandom(7) === true) {
         this.content.innerHTML += `<strong>${words[i]}</strong>`;
-      } else if (this.allowEmphasis === true && hitRandom(9) === true) {
-        this.content.innerHTML += `<em>${words[i]}</em>`;
       } else {
        this.content.innerHTML += words[i];
       }
