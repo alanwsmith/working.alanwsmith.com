@@ -2968,7 +2968,9 @@ componentSheet.replaceSync(`
   overflow-y: clip;
   font-size: var(--card-font-size);
   color: var(--card-font-color);
+  text-shadow: 1px 1px 2px rgb(0 0 0 / 0.1);
 }
+
 
 .card-1 {
   transform: var(--rotate-card-1);
