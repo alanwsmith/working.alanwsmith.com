@@ -937,9 +937,9 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[word]);
           }
           lines.push(words.join('*'));
@@ -956,9 +956,9 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[word]);
           }
           lines.push(words.join(''));
@@ -977,7 +977,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(3)) {
               words.push(baseDots()[page]);
             } else {
@@ -998,7 +998,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(3)) {
               words.push(basePipes()[page]);
             } else {
@@ -1019,7 +1019,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word < line) {
               words.push(basePipes()[page]);
             } else {
@@ -1040,7 +1040,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word < line) {
               words.push(baseDashes()[page]);
             } else {
@@ -1061,7 +1061,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             } else {
@@ -1082,7 +1082,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word <= line) {
               words.push(baseLowercase()[page]);
             } else {
@@ -1103,7 +1103,7 @@ function setList() {
         const lines = []
         for (let line = 0; line <= 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             words.push(baseLowercase()[page]);
           }
           lines.push(words.join(''));
@@ -1152,9 +1152,9 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             // skip makes since it overflows
             if (page !== 5) {
               words.push(baseUppercase()[page]);
@@ -1175,7 +1175,7 @@ function setList() {
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
         const words = [];
-          //for (let word = 0; word <= 10; word += 1) {
+          //for (let word = 0; word < 10; word += 1) {
         words.push(baseUppercase()[page]);
           //}
         lines.push(words.join(' '));
@@ -1189,9 +1189,9 @@ function setList() {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          //for (let word = 0; word <= 10; word += 1) {
+          //for (let word = 0; word < 10; word += 1) {
             words.push(baseUppercase()[page]);
           //}
           lines.push(words.join(' '));
@@ -1207,9 +1207,9 @@ function setList() {
       const indexes = [0, 1, 8, 9];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (indexes.includes(word)) {
               words.push(baseUppercase()[word]);
             } else {
@@ -1229,9 +1229,9 @@ function setList() {
       const indexes = [0, 1, 5, 8, 9];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (indexes.includes(word)) {
               words.push(baseUppercase()[word]);
             } else {
@@ -1245,14 +1245,15 @@ function setList() {
       return pages;
     },
 
-    // Diagonal Underscores With Uppercase
+    /////////////////////////////////////////////
+    // Index: 50
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUnderscore()[word]);
             } else {
@@ -1266,12 +1267,13 @@ function setList() {
       return pages;
     },
 
-    // Reverse Diagonal Uppercase with underscores
+    /////////////////////////////////////////////
+    // Index: 51
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
           for (let word = 10; word >= 0; word -= 1) {
             if (word === line) {
@@ -1287,14 +1289,15 @@ function setList() {
       return pages;
     },
 
-    // Diagonal Uppercase with underscores
+    /////////////////////////////////////////////
+    // Index: 52
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUppercase()[word]);
             } else {
@@ -1308,14 +1311,15 @@ function setList() {
       return pages;
     },
 
-    // Diagonal lowercase with underscores
+    /////////////////////////////////////////////
+    // Index: 53
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseLowercase()[word]);
             } else {
@@ -1329,14 +1333,15 @@ function setList() {
       return pages;
     },
 
-    // Lowercase or frequent hashtags
+    /////////////////////////////////////////////
+    // Index: 54
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(9)) {
               words.push(baseLowercase()[word]);
             } else {
@@ -1350,14 +1355,15 @@ function setList() {
       return pages;
     },
 
-    // Uppercase or frequent underscores 
+    /////////////////////////////////////////////
+    // Index: 55
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(9)) {
               words.push(baseUppercase()[word]);
             } else {
@@ -1371,14 +1377,15 @@ function setList() {
       return pages;
     },
 
-    // Uppercase or underscores 
+    /////////////////////////////////////////////
+    // Index: 56
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(4)) {
               words.push(baseUnderscore()[word]);
             } else {
@@ -1392,14 +1399,15 @@ function setList() {
       return pages;
     },
 
-    // Uppercase or spaces 
+    /////////////////////////////////////////////
+    // Index: 57
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(4)) {
               words.push(baseSpaces()[word]);
             } else {
@@ -1413,14 +1421,15 @@ function setList() {
       return pages;
     },
 
-    // Lowercase or dots
+    /////////////////////////////////////////////
+    // Index: 58
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (hitRandom(4)) {
               words.push(baseDots()[word]);
             } else {
@@ -1434,7 +1443,8 @@ function setList() {
       return pages;
     },
 
-    // Six columns left justified uppercase
+    /////////////////////////////////////////////
+    // Index: 59
     () => {
       const pages = [];
       for (let page = 0; page < 1; page += 1) {
@@ -1451,7 +1461,8 @@ function setList() {
       return pages;
     },
 
-    // Six columns left justified lowercase
+    /////////////////////////////////////////////
+    // Index: 60
     () => {
       const pages = [];
       for (let page = 0; page < 1; page += 1) {
@@ -1468,63 +1479,20 @@ function setList() {
       return pages;
     },
 
-    // Three columns of pairs
+    /////////////////////////////////////////////
+    // Index: 61
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUppercaseTrailingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
               words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-            }
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
-
-    // Three columns of pairs
-    () => {
-      const pages = [];
-      for (let page = 0; page < 10; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= page; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (word === line) {
-              words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-              words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-              words.push(baseUppercaseTrailingSpaces()[word]);
-              words.push(baseUppercaseLeadingSpaces()[word]);
-            }
-          }
-          lines.push(words.join(' '));
-        }
-        pages.push(lines.join("\n"));
-      }
-      return pages;
-    },
-
-    // Word pair justify on center outside
-    () => {
-      const pages = [];
-      for (let page = 0; page < 10; page += 1) {
-        const lines = [];
-        for (let line = 0; line <= page; line += 1) {
-          const words = [];
-          for (let word = 0; word <= 10; word += 1) {
-            if (word === line) {
               words.push(baseUppercaseTrailingSpaces()[word]);
               words.push(baseUppercaseLeadingSpaces()[word]);
             }
@@ -1537,16 +1505,68 @@ function setList() {
     },
 
     /////////////////////////////////////////////
+    // Index: 62
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
+    // Index: 63
+    () => {
+      const pages = [];
+      for (let page = 0; page < 10; page += 1) {
+        const lines = [];
+        for (let line = 0; line < 10; line += 1) {
+          const words = [];
+          for (let word = 0; word < 10; word += 1) {
+            if (word === line) {
+              words.push(baseUppercaseTrailingSpaces()[word]);
+              words.push(baseUppercaseLeadingSpaces()[word]);
+            }
+          }
+          lines.push(words.join(' '));
+        }
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
+      }
+      return pages;
+    },
+
+    /////////////////////////////////////////////
     // Index: 64
     () => {
       const pages = [];
       for (let page = 0; page < 10; page += 1) {
         const lines = [];
-        for (let line = 0; line <= page; line += 1) {
+        for (let line = 0; line < 10; line += 1) {
           const words = [];
-          for (let word = 0; word <= 10; word += 1) {
+          for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseLowercase()[word]);
+              words.push(baseLowercaseLeadingSpaces()[word]);
+              words.push(baseLowercaseLeadingSpaces()[word]);
               words.push(baseLowercaseLeadingSpaces()[word]);
               words.push(baseLowercaseLeadingSpaces()[word]);
               words.push(baseLowercaseLeadingSpaces()[word]);
@@ -1555,7 +1575,9 @@ function setList() {
           }
           lines.push(words.join(' '));
         }
-        pages.push(lines.join("\n"));
+        if (page === 9) {
+          pages.push(lines.join("\n"));
+        }
       }
       return pages;
     },
@@ -1625,10 +1647,10 @@ function setList() {
           for (let word = 0; word < 10; word += 1) {
             if (word === line) {
               words.push(baseUppercaseLeadingSpaces()[word]);
-              words.push(baseUppercase()[word]);
+              words.push(baseUppercaseTrailingSpaces()[word]);
             }
           }
-          lines.push(words.join(' '));
+          lines.push(centerLine(words.join(' ')));
         }
         if (page === 9) {
           pages.push(lines.join("\n"));
@@ -2413,6 +2435,16 @@ function setList() {
 
 
   ]
+}
+
+function centerLine(line) {
+  const characterCount = Math.round(line.split('').length / 2);
+  const leftPad = 21 - characterCount;
+  if (leftPad > 0) {
+    return Array(leftPad).fill(' ').join('') + line;
+  } else {
+    return line;
+  }
 }
 
 function hitRandom(num) {
