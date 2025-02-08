@@ -6,6 +6,141 @@ let debug = true;
 function setList() {
   return [
 
+    // Bottom Line With dots 
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (word === page ) {
+                  words.push(baseDots()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // }
+      return pages;
+    },
+
+    // Target Line With Hashtags 
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page) {
+                words.push(baseUppercase()[word]);
+              } else {
+                if (word === page ) {
+                  words.push(baseHashtags()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // }
+      return pages;
+    },
+
+    // Dotted line with random words surrounding
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page) {
+                words.push(baseDots()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseLowercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // } 
+      return pages;
+    },
+
+    // Single lower case line with dots surrounding
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page) {
+                words.push(baseLowercase()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseDots()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // } 
+      return pages;
+    },
+
+    // Underscore line surround by random upper case
+    () => {
+      const pages = [];
+      // for (let targetLine = 0; targetLine < 10; targetLine += 1) {
+        for (let page = 0; page < 10; page += 1) {
+          const lines = [];
+          for (let line = 0; line < 12; line += 1) {
+            const words = [];
+            for (let word = 0; word < 10; word += 1) {
+              if (line === page ) {
+                words.push(baseUnderscore()[word]);
+              } else {
+                if (hitRandom(3)) {
+                  words.push(baseUppercase()[word]);
+                } else {
+                  words.push(baseSpaces()[word]);
+                }
+              }
+            }
+            lines.push(words.join(' '));
+          }
+          pages.push(lines.join("\n"));
+        }
+      // } 
+      return pages;
+    },
+
     // Uppercase block with single line bridge of random words
     () => {
       const pages = [];
@@ -153,88 +288,6 @@ function setList() {
     },
 
 
-    // Underscore line surround by random upper case
-    () => {
-      const pages = [];
-      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 10; page += 1) {
-          const lines = [];
-          for (let line = 0; line < 12; line += 1) {
-            const words = [];
-            for (let word = 0; word < 10; word += 1) {
-              if (line === targetLine) {
-                words.push(baseUnderscore()[word]);
-              } else {
-                if (hitRandom(3)) {
-                  words.push(baseUppercase()[word]);
-                } else {
-                  words.push(baseSpaces()[word]);
-                }
-              }
-            }
-            lines.push(words.join(' '));
-          }
-          pages.push(lines.join("\n"));
-        }
-      } 
-      return pages;
-    },
-
-    // Single lower case line with dots surrounding
-    () => {
-      const pages = [];
-      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 10; page += 1) {
-          const lines = [];
-          for (let line = 0; line < 12; line += 1) {
-            const words = [];
-            for (let word = 0; word < 10; word += 1) {
-              if (line === targetLine) {
-                words.push(baseLowercase()[word]);
-              } else {
-                if (hitRandom(3)) {
-                  words.push(baseDots()[word]);
-                } else {
-                  words.push(baseSpaces()[word]);
-                }
-              }
-            }
-            lines.push(words.join(' '));
-          }
-          pages.push(lines.join("\n"));
-        }
-      } 
-      return pages;
-    },
-
-    // Dotted line with random words surrounding
-    () => {
-      const pages = [];
-      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 10; page += 1) {
-          const lines = [];
-          for (let line = 0; line < 12; line += 1) {
-            const words = [];
-            for (let word = 0; word < 10; word += 1) {
-              if (line === targetLine) {
-                words.push(baseDots()[word]);
-              } else {
-                if (hitRandom(3)) {
-                  words.push(baseLowercase()[word]);
-                } else {
-                  words.push(baseSpaces()[word]);
-                }
-              }
-            }
-            lines.push(words.join(' '));
-          }
-          pages.push(lines.join("\n"));
-        }
-      } 
-      return pages;
-    },
-
-
     // Border HashTags With Random Words Inside
     () => {
       const pages = [];
@@ -297,59 +350,7 @@ function setList() {
       return pages;
     },
 
-    // Target Line With Hashtags 
-    () => {
-      const pages = [];
-      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 10; page += 1) {
-          const lines = [];
-          for (let line = 0; line < 12; line += 1) {
-            const words = [];
-            for (let word = 0; word < 10; word += 1) {
-              if (line === targetLine) {
-                words.push(baseUppercase()[word]);
-              } else {
-                if (word === page ) {
-                  words.push(baseHashtags()[word]);
-                } else {
-                  words.push(baseSpaces()[word]);
-                }
-              }
-            }
-            lines.push(words.join(' '));
-          }
-          pages.push(lines.join("\n"));
-        }
-      }
-      return pages;
-    },
 
-    // Bottom Line With dots 
-    () => {
-      const pages = [];
-      for (let targetLine = 0; targetLine < 10; targetLine += 1) {
-        for (let page = 0; page < 10; page += 1) {
-          const lines = [];
-          for (let line = 0; line < 12; line += 1) {
-            const words = [];
-            for (let word = 0; word < 10; word += 1) {
-              if (line === targetLine) {
-                words.push(baseUppercase()[word]);
-              } else {
-                if (word === page ) {
-                  words.push(baseDots()[word]);
-                } else {
-                  words.push(baseSpaces()[word]);
-                }
-              }
-            }
-            lines.push(words.join(' '));
-          }
-          pages.push(lines.join("\n"));
-        }
-      }
-      return pages;
-    },
 
     // Bottom Line With Underscores
     () => {
